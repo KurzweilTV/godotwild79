@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://bjahju06fp1ei"]
+[gd_scene load_steps=26 format=4 uid="uid://bjahju06fp1ei"]
 
 [ext_resource type="Texture2D" uid="uid://bjhq4rlnydyqg" path="res://gameboard/art/tileGrass1.png" id="1_2rh0h"]
 [ext_resource type="Texture2D" uid="uid://chlxvkipkc2u6" path="res://gameboard/art/tileGrass2.png" id="2_kjxxd"]
@@ -8,6 +8,14 @@
 [ext_resource type="Texture2D" uid="uid://c3g6wkc8ajyah" path="res://gameboard/art/tileGrass_transitionW.png" id="6_nkw1a"]
 [ext_resource type="Texture2D" uid="uid://casn3y1m32n2a" path="res://gameboard/art/tileSand1.png" id="7_2hcvp"]
 [ext_resource type="Texture2D" uid="uid://bnm0i0b84viks" path="res://gameboard/art/tileSand2.png" id="8_7tmrk"]
+[ext_resource type="PackedScene" uid="uid://dprbr4w2jlt4s" path="res://gameboard/scenes/GrowPlot.tscn" id="9_kjxxd"]
+[ext_resource type="PackedScene" uid="uid://d4ee5fxan4i06" path="res://gameboard/scenes/ToolPlot.tscn" id="10_1m0n5"]
+[ext_resource type="Texture2D" uid="uid://bba04iiquhubv" path="res://tools/art/Hoe.png" id="11_mu0h5"]
+[ext_resource type="Texture2D" uid="uid://cgy8r12hsosix" path="res://tools/art/WateringCan.png" id="13_7tmrk"]
+[ext_resource type="Texture2D" uid="uid://bqj086smygr3h" path="res://tools/art/Seeds_Green.png" id="14_hhj1e"]
+[ext_resource type="Texture2D" uid="uid://cvhg42yytdm84" path="res://tools/art/HandScythe.png" id="14_jcyhx"]
+[ext_resource type="Texture2D" uid="uid://nhmphbsfa1f8" path="res://tools/art/Seeds_Blue.png" id="15_hhj1e"]
+[ext_resource type="Texture2D" uid="uid://b7qxvfgvv006w" path="res://tools/art/Seeds_Pink.png" id="16_jcyhx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jcyhx"]
 texture = ExtResource("1_2rh0h")
@@ -62,6 +70,94 @@ sources/7 = SubResource("TileSetAtlasSource_7624x")
 
 [node name="Main" type="Node2D"]
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAALAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAMAAEAAAAAAAAAAAAMAAIAAAAAAAAAAAAMAAMAAAAAAAAAAAAMAAQAAAAAAAAAAAAMAAUAAAAAAAAAAAAMAAYAAAAAAAAAAAAMAAcAAAAAAAAAAAALAAcAAAAAAAAAAAAKAAcAAAAAAAAAAAAJAAcAAAAAAAAAAAAIAAcAAAAAAAAAAAAHAAcAAAAAAAAAAAAGAAcAAAAAAAAAAAAGAAYAAAAAAAAAAAAFAAYAAwAAAAAAAAAEAAYAAwAAAAAAAAAEAAcAAAAAAAAAAAADAAcAAAAAAAAAAAACAAcAAAAAAAAAAAABAAcAAAAAAAAAAAABAAYAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAACAAYAAwAAAAAAAAADAAYAAwAAAAAAAAAFAAcAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAEAAAAAAAAAAAADAAMABwAAAAAAAAADAAIABgAAAAAAAAADAAEABAAAAAAAAAACAAEABAAAAAAAAAABAAEAAAAAAAAAAAABAAIAAgAAAAAAAAABAAMAAgAAAAAAAAABAAQAAgAAAAAAAAABAAUAAgAAAAAAAAACAAUABgAAAAAAAAACAAQABgAAAAAAAAACAAMABgAAAAAAAAACAAIABgAAAAAAAAADAAQABgAAAAAAAAADAAUABwAAAAAAAAAEAAUABgAAAAAAAAAEAAQABgAAAAAAAAAEAAMABgAAAAAAAAAEAAIABgAAAAAAAAAEAAEABAAAAAAAAAAFAAEABAAAAAAAAAAFAAIABwAAAAAAAAAFAAMABgAAAAAAAAAFAAQABwAAAAAAAAAFAAUABgAAAAAAAAAGAAUABQAAAAAAAAAGAAQABQAAAAAAAAAGAAMABQAAAAAAAAAGAAIABQAAAAAAAAAGAAEAAAAAAAAAAAAHAAEAAAAAAAAAAAAHAAIAAAAAAAAAAAAHAAMAAAAAAAAAAAAHAAQAAAAAAAAAAAAHAAUAAAAAAAAAAAAHAAYAAAAAAAAAAAAIAAYAAAAAAAAAAAAIAAUAAAAAAAAAAAAIAAQAAAAAAAAAAAAIAAMAAAAAAAAAAAAIAAIAAAAAAAAAAAAIAAEAAAAAAAAAAAAJAAEAAAAAAAAAAAAJAAIAAAAAAAAAAAAJAAMAAAAAAAAAAAAJAAQAAAAAAAAAAAAJAAUAAAAAAAAAAAAJAAYAAAAAAAAAAAAKAAYAAAAAAAAAAAAKAAUAAAAAAAAAAAAKAAQAAAAAAAAAAAAKAAMAAAAAAAAAAAAKAAIAAAAAAAAAAAAKAAEAAAAAAAAAAAALAAEAAAAAAAAAAAALAAIAAAAAAAAAAAALAAMAAAAAAAAAAAALAAQAAAAAAAAAAAALAAUAAAAAAAAAAAALAAYAAAAAAAAAAAA=")
+[node name="Gameboard" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAALAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAMAAEAAAAAAAAAAAAMAAIAAAAAAAAAAAAMAAMAAAAAAAAAAAAMAAQAAAAAAAAAAAAMAAUAAAAAAAAAAAAMAAYAAAAAAAAAAAAMAAcAAAAAAAAAAAALAAcAAAAAAAAAAAAKAAcAAAAAAAAAAAAJAAcAAAAAAAAAAAAIAAcAAAAAAAAAAAAHAAcAAAAAAAAAAAAGAAcAAAAAAAAAAAAGAAYAAAAAAAAAAAAFAAYAAwAAAAAAAAAEAAYAAwAAAAAAAAAEAAcAAAAAAAAAAAADAAcAAAAAAAAAAAACAAcAAAAAAAAAAAABAAcAAAAAAAAAAAABAAYAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAACAAYAAwAAAAAAAAADAAYAAwAAAAAAAAAFAAcAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAEAAAAAAAAAAAADAAMABwAAAAAAAAADAAIABgAAAAAAAAADAAEABAAAAAAAAAACAAEABAAAAAAAAAABAAEAAAAAAAAAAAABAAIAAgAAAAAAAAABAAMAAgAAAAAAAAABAAQAAgAAAAAAAAABAAUAAgAAAAAAAAACAAUABgAAAAAAAAACAAQABgAAAAAAAAACAAMABgAAAAAAAAACAAIABgAAAAAAAAADAAQABgAAAAAAAAADAAUABwAAAAAAAAAEAAUABgAAAAAAAAAEAAQABgAAAAAAAAAEAAMABgAAAAAAAAAEAAIABgAAAAAAAAAEAAEABAAAAAAAAAAFAAEABAAAAAAAAAAFAAIABwAAAAAAAAAFAAMABgAAAAAAAAAFAAQABwAAAAAAAAAFAAUABgAAAAAAAAAGAAUABQAAAAAAAAAGAAQABQAAAAAAAAAGAAMABQAAAAAAAAAGAAIABQAAAAAAAAAGAAEAAAAAAAAAAAAHAAEAAAAAAAAAAAAHAAIAAAAAAAAAAAAHAAMAAAAAAAAAAAAHAAQAAAAAAAAAAAAHAAUAAAAAAAAAAAAHAAYAAAAAAAAAAAAIAAYAAAAAAAAAAAAIAAUAAAAAAAAAAAAIAAMAAAAAAAAAAAAIAAIAAAAAAAAAAAAIAAEAAAAAAAAAAAAJAAEAAAAAAAAAAAAJAAIAAAAAAAAAAAAJAAMAAAAAAAAAAAAJAAQAAAAAAAAAAAAJAAUAAAAAAAAAAAAJAAYAAAAAAAAAAAAKAAYAAAAAAAAAAAAKAAUAAAAAAAAAAAAKAAQAAAAAAAAAAAAKAAMAAAAAAAAAAAAKAAIAAAAAAAAAAAAKAAEAAAAAAAAAAAALAAEAAAAAAAAAAAALAAIAAAAAAAAAAAALAAMAAAAAAAAAAAALAAQAAAAAAAAAAAALAAUAAAAAAAAAAAALAAYAAAAAAAAAAAAIAAQAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_iclgn")
+
+[node name="Plots" type="Node2D" parent="."]
+
+[node name="GrowPlot1" parent="Plots" instance=ExtResource("9_kjxxd")]
+position = Vector2(160, 160)
+
+[node name="GrowPlot2" parent="Plots" instance=ExtResource("9_kjxxd")]
+position = Vector2(224, 160)
+
+[node name="GrowPlot3" parent="Plots" instance=ExtResource("9_kjxxd")]
+position = Vector2(288, 160)
+
+[node name="GrowPlot4" parent="Plots" instance=ExtResource("9_kjxxd")]
+position = Vector2(352, 160)
+
+[node name="GrowPlot5" parent="Plots" instance=ExtResource("9_kjxxd")]
+position = Vector2(160, 224)
+
+[node name="GrowPlot6" parent="Plots" instance=ExtResource("9_kjxxd")]
+position = Vector2(224, 224)
+
+[node name="GrowPlot7" parent="Plots" instance=ExtResource("9_kjxxd")]
+position = Vector2(288, 224)
+
+[node name="GrowPlot8" parent="Plots" instance=ExtResource("9_kjxxd")]
+position = Vector2(352, 224)
+
+[node name="GrowPlot9" parent="Plots" instance=ExtResource("9_kjxxd")]
+position = Vector2(160, 288)
+
+[node name="GrowPlot10" parent="Plots" instance=ExtResource("9_kjxxd")]
+position = Vector2(224, 288)
+
+[node name="GrowPlot11" parent="Plots" instance=ExtResource("9_kjxxd")]
+position = Vector2(288, 288)
+
+[node name="GrowPlot12" parent="Plots" instance=ExtResource("9_kjxxd")]
+position = Vector2(352, 288)
+
+[node name="GrowPlot13" parent="Plots" instance=ExtResource("9_kjxxd")]
+position = Vector2(160, 352)
+
+[node name="GrowPlot14" parent="Plots" instance=ExtResource("9_kjxxd")]
+position = Vector2(224, 352)
+
+[node name="GrowPlot15" parent="Plots" instance=ExtResource("9_kjxxd")]
+position = Vector2(288, 352)
+
+[node name="GrowPlot16" parent="Plots" instance=ExtResource("9_kjxxd")]
+position = Vector2(352, 352)
+
+[node name="Tools" type="Node2D" parent="."]
+
+[node name="ToolPlot1" parent="Tools" instance=ExtResource("10_1m0n5")]
+position = Vector2(191, 53)
+tool_name = "Hoe"
+tool_function = "Till"
+icon = ExtResource("11_mu0h5")
+
+[node name="ToolPlot2" parent="Tools" instance=ExtResource("10_1m0n5")]
+position = Vector2(255, 53)
+tool_name = "Water Bucket"
+tool_function = "Water"
+icon = ExtResource("13_7tmrk")
+
+[node name="ToolPlot3" parent="Tools" instance=ExtResource("10_1m0n5")]
+position = Vector2(319, 53)
+tool_name = "Scythe"
+tool_function = "Harvest"
+icon = ExtResource("14_jcyhx")
+
+[node name="SeedPlot1" parent="Tools" instance=ExtResource("10_1m0n5")]
+position = Vector2(53, 224)
+tool_name = "Seeds"
+tool_function = "Green"
+icon = ExtResource("14_hhj1e")
+
+[node name="SeedPlot2" parent="Tools" instance=ExtResource("10_1m0n5")]
+position = Vector2(53, 288)
+tool_name = "Seed"
+tool_function = "Blue"
+icon = ExtResource("15_hhj1e")
+
+[node name="SeedPlot3" parent="Tools" instance=ExtResource("10_1m0n5")]
+position = Vector2(53, 351)
+tool_name = "Seed"
+tool_function = "Pink"
+icon = ExtResource("16_jcyhx")

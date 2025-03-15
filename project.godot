@@ -12,18 +12,20 @@ config_version=5
 
 config/name="Godot Wild 79"
 config/tags=PackedStringArray("gamejam")
+run/main_scene="uid://bjahju06fp1ei"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GlobalCursor="*res://globals/cursor_handler.gd"
+
 [display]
 
-window/size/viewport_width=800
-window/size/viewport_height=450
-window/size/resizable=false
+window/size/viewport_width=1600
+window/size/viewport_height=900
 window/stretch/mode="viewport"
 window/stretch/scale=2.0
 window/stretch/scale_mode="integer"
-
-[rendering]
-
-textures/canvas_textures/default_texture_filter=0
+mouse_cursor/custom_image="uid://d05rlc7f7b14n"
+mouse_cursor/custom_image_hotspot=Vector2(10, 0)
