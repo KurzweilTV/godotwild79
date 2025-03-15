@@ -135,7 +135,7 @@ icon = ExtResource("11_mu0h5")
 
 [node name="ToolPlot2" parent="Tools" instance=ExtResource("10_1m0n5")]
 position = Vector2(255, 53)
-tool_name = "Water Bucket"
+tool_name = "WaterBucket"
 tool_function = "Water"
 icon = ExtResource("13_7tmrk")
 

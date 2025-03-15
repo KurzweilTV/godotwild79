@@ -1,5 +1,7 @@
 class_name ToolPlot
-extends Plot
+extends Area2D
+
+var tool_present : bool = true
 
 @export var tool_name : String
 @export var tool_function : String
@@ -14,20 +16,21 @@ func _ready() -> void:
 	if tool_function:
 		tool_label.text = tool_function
 
-func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.pressed:
 		if event.button_index == MOUSE_BUTTON_LEFT: 
 			handle_tool_pickup_or_drop()
 
 func handle_tool_pickup_or_drop():
 	if tool_present and not GlobalCursor.is_holding_tool:
-		print("Picked up %s" % tool_name)
+		#print("Picked up %s" % tool_name)
 		tool_present = false
 		GlobalCursor.is_holding_tool = true
+		GlobalCursor.tool_held = tool_name
 		GlobalCursor.set_custom_cursor(icon)
 		tool_icon.hide()
 	elif not tool_present and GlobalCursor.is_holding_tool:
-		print("Put Down %s" % tool_name)
+		#print("Put Down %s" % tool_name)
 		tool_present = true
 		GlobalCursor.is_holding_tool = false
 		GlobalCursor.reset_custom_cursor()
