@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://bjahju06fp1ei"]
+[gd_scene load_steps=27 format=4 uid="uid://bjahju06fp1ei"]
 
 [ext_resource type="Texture2D" uid="uid://bjhq4rlnydyqg" path="res://gameboard/art/tileGrass1.png" id="1_2rh0h"]
 [ext_resource type="Texture2D" uid="uid://chlxvkipkc2u6" path="res://gameboard/art/tileGrass2.png" id="2_kjxxd"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://bqj086smygr3h" path="res://tools/art/Seeds_Green.png" id="14_hhj1e"]
 [ext_resource type="Texture2D" uid="uid://cvhg42yytdm84" path="res://tools/art/HandScythe.png" id="14_jcyhx"]
 [ext_resource type="Texture2D" uid="uid://nhmphbsfa1f8" path="res://tools/art/Seeds_Blue.png" id="15_hhj1e"]
+[ext_resource type="Resource" uid="uid://dlyk8fml2ohod" path="res://crops/resources/glowroot.tres" id="15_qol7g"]
 [ext_resource type="Texture2D" uid="uid://b7qxvfgvv006w" path="res://tools/art/Seeds_Pink.png" id="16_jcyhx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jcyhx"]
@@ -79,51 +80,227 @@ tile_set = SubResource("TileSet_iclgn")
 
 [node name="GrowPlot1" parent="Plots" instance=ExtResource("9_kjxxd")]
 position = Vector2(160, 160)
+crop_planted = false
+crop_name = ""
+watered = false
+water_level = 0.0
+water_max = 100.0
+water_min = 0.0
+water_drying_rate = 7
+ready_to_till = true
+is_tilled = false
+ready_to_plant = false
+ready_to_harvest = false
 
 [node name="GrowPlot2" parent="Plots" instance=ExtResource("9_kjxxd")]
 position = Vector2(224, 160)
+crop_planted = false
+crop_name = ""
+watered = false
+water_level = 0.0
+water_max = 100.0
+water_min = 0.0
+water_drying_rate = 7
+ready_to_till = true
+is_tilled = false
+ready_to_plant = false
+ready_to_harvest = false
 
 [node name="GrowPlot3" parent="Plots" instance=ExtResource("9_kjxxd")]
 position = Vector2(288, 160)
+crop_planted = false
+crop_name = ""
+watered = false
+water_level = 0.0
+water_max = 100.0
+water_min = 0.0
+water_drying_rate = 7
+ready_to_till = true
+is_tilled = false
+ready_to_plant = false
+ready_to_harvest = false
 
 [node name="GrowPlot4" parent="Plots" instance=ExtResource("9_kjxxd")]
 position = Vector2(352, 160)
+crop_planted = false
+crop_name = ""
+watered = false
+water_level = 0.0
+water_max = 100.0
+water_min = 0.0
+water_drying_rate = 7
+ready_to_till = true
+is_tilled = false
+ready_to_plant = false
+ready_to_harvest = false
 
 [node name="GrowPlot5" parent="Plots" instance=ExtResource("9_kjxxd")]
 position = Vector2(160, 224)
+crop_planted = false
+crop_name = ""
+watered = false
+water_level = 0.0
+water_max = 100.0
+water_min = 0.0
+water_drying_rate = 7
+ready_to_till = true
+is_tilled = false
+ready_to_plant = false
+ready_to_harvest = false
 
 [node name="GrowPlot6" parent="Plots" instance=ExtResource("9_kjxxd")]
 position = Vector2(224, 224)
+crop_planted = false
+crop_name = ""
+watered = false
+water_level = 0.0
+water_max = 100.0
+water_min = 0.0
+water_drying_rate = 7
+ready_to_till = true
+is_tilled = false
+ready_to_plant = false
+ready_to_harvest = false
 
 [node name="GrowPlot7" parent="Plots" instance=ExtResource("9_kjxxd")]
 position = Vector2(288, 224)
+crop_planted = false
+crop_name = ""
+watered = false
+water_level = 0.0
+water_max = 100.0
+water_min = 0.0
+water_drying_rate = 7
+ready_to_till = true
+is_tilled = false
+ready_to_plant = false
+ready_to_harvest = false
 
 [node name="GrowPlot8" parent="Plots" instance=ExtResource("9_kjxxd")]
 position = Vector2(352, 224)
+crop_planted = false
+crop_name = ""
+watered = false
+water_level = 0.0
+water_max = 100.0
+water_min = 0.0
+water_drying_rate = 7
+ready_to_till = true
+is_tilled = false
+ready_to_plant = false
+ready_to_harvest = false
 
 [node name="GrowPlot9" parent="Plots" instance=ExtResource("9_kjxxd")]
 position = Vector2(160, 288)
+crop_planted = false
+crop_name = ""
+watered = false
+water_level = 0.0
+water_max = 100.0
+water_min = 0.0
+water_drying_rate = 7
+ready_to_till = true
+is_tilled = false
+ready_to_plant = false
+ready_to_harvest = false
 
 [node name="GrowPlot10" parent="Plots" instance=ExtResource("9_kjxxd")]
 position = Vector2(224, 288)
+crop_planted = false
+crop_name = ""
+watered = false
+water_level = 0.0
+water_max = 100.0
+water_min = 0.0
+water_drying_rate = 7
+ready_to_till = true
+is_tilled = false
+ready_to_plant = false
+ready_to_harvest = false
 
 [node name="GrowPlot11" parent="Plots" instance=ExtResource("9_kjxxd")]
 position = Vector2(288, 288)
+crop_planted = false
+crop_name = ""
+watered = false
+water_level = 0.0
+water_max = 100.0
+water_min = 0.0
+water_drying_rate = 7
+ready_to_till = true
+is_tilled = false
+ready_to_plant = false
+ready_to_harvest = false
 
 [node name="GrowPlot12" parent="Plots" instance=ExtResource("9_kjxxd")]
 position = Vector2(352, 288)
+crop_planted = false
+crop_name = ""
+watered = false
+water_level = 0.0
+water_max = 100.0
+water_min = 0.0
+water_drying_rate = 7
+ready_to_till = true
+is_tilled = false
+ready_to_plant = false
+ready_to_harvest = false
 
 [node name="GrowPlot13" parent="Plots" instance=ExtResource("9_kjxxd")]
 position = Vector2(160, 352)
+crop_planted = false
+crop_name = ""
+watered = false
+water_level = 0.0
+water_max = 100.0
+water_min = 0.0
+water_drying_rate = 7
+ready_to_till = true
+is_tilled = false
+ready_to_plant = false
+ready_to_harvest = false
 
 [node name="GrowPlot14" parent="Plots" instance=ExtResource("9_kjxxd")]
 position = Vector2(224, 352)
+crop_planted = false
+crop_name = ""
+watered = false
+water_level = 0.0
+water_max = 100.0
+water_min = 0.0
+water_drying_rate = 7
+ready_to_till = true
+is_tilled = false
+ready_to_plant = false
+ready_to_harvest = false
 
 [node name="GrowPlot15" parent="Plots" instance=ExtResource("9_kjxxd")]
 position = Vector2(288, 352)
+crop_planted = false
+crop_name = ""
+watered = false
+water_level = 0.0
+water_max = 100.0
+water_min = 0.0
+water_drying_rate = 7
+ready_to_till = true
+is_tilled = false
+ready_to_plant = false
+ready_to_harvest = false
 
 [node name="GrowPlot16" parent="Plots" instance=ExtResource("9_kjxxd")]
 position = Vector2(352, 352)
+crop_planted = false
+crop_name = ""
+watered = false
+water_level = 0.0
+water_max = 100.0
+water_min = 0.0
+water_drying_rate = 7
+ready_to_till = true
+is_tilled = false
+ready_to_plant = false
+ready_to_harvest = false
 
 [node name="Tools" type="Node2D" parent="."]
 
@@ -147,18 +324,20 @@ icon = ExtResource("14_jcyhx")
 
 [node name="SeedPlot1" parent="Tools" instance=ExtResource("10_1m0n5")]
 position = Vector2(53, 192)
-tool_name = "Seeds"
-tool_function = "Green"
+tool_name = "Glowroot"
+tool_function = "Glowroot"
 icon = ExtResource("14_hhj1e")
+is_seed = true
+crop = ExtResource("15_qol7g")
 
 [node name="SeedPlot2" parent="Tools" instance=ExtResource("10_1m0n5")]
 position = Vector2(53, 256)
-tool_name = "Seed"
-tool_function = "Blue"
-icon = ExtResource("15_hhj1e")
+tool_name = "Emberberry"
+tool_function = "Emberberry"
+icon = ExtResource("16_jcyhx")
 
 [node name="SeedPlot3" parent="Tools" instance=ExtResource("10_1m0n5")]
-position = Vector2(53, 319)
-tool_name = "Seed"
-tool_function = "Pink"
-icon = ExtResource("16_jcyhx")
+position = Vector2(54, 319)
+tool_name = "Dewblossom"
+tool_function = "Dewblossom"
+icon = ExtResource("15_hhj1e")

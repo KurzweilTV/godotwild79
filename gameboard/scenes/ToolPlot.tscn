@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://d4ee5fxan4i06"]
+[gd_scene load_steps=8 format=3 uid="uid://d4ee5fxan4i06"]
 
 [ext_resource type="Script" uid="uid://wy8ivtrdu6fk" path="res://gameboard/scenes/scripts/tool_plot.gd" id="1_i0gku"]
 [ext_resource type="Texture2D" uid="uid://bbwnqbyqmekyq" path="res://tools/art/HandRake.png" id="2_0yqva"]
+[ext_resource type="Texture2D" uid="uid://dqx7s2q5pww3g" path="res://tools/art/placement_bracket.png" id="2_dam0o"]
 [ext_resource type="Texture2D" uid="uid://bg3p6kl3j40nm" path="res://gameboard/art/highlight.png" id="2_jbbna"]
 [ext_resource type="Texture2D" uid="uid://c0bvbpbwk0nx8" path="res://tools/art/shadow.png" id="3_dam0o"]
 
@@ -9,7 +10,7 @@
 size = Vector2(58, 58)
 
 [sub_resource type="LabelSettings" id="LabelSettings_i0gku"]
-font_size = 12
+font_size = 11
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 4
@@ -18,6 +19,10 @@ shadow_color = Color(0, 0, 0, 0.266667)
 [node name="ToolPlot" type="Area2D"]
 texture_filter = 2
 script = ExtResource("1_i0gku")
+
+[node name="PlacementBracket" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_dam0o")
 
 [node name="ToolIcon" type="Sprite2D" parent="."]
 z_index = 5
@@ -35,6 +40,8 @@ texture = ExtResource("3_dam0o")
 
 [node name="Highlight" type="Sprite2D" parent="."]
 visible = false
+z_index = 5
+z_as_relative = false
 texture = ExtResource("2_jbbna")
 
 [node name="DetectionArea" type="CollisionShape2D" parent="."]
@@ -44,9 +51,9 @@ shape = SubResource("RectangleShape2D_nsnlj")
 [node name="ToolLabel" type="Label" parent="."]
 texture_filter = 1
 offset_left = -29.0
-offset_top = 14.0
+offset_top = 13.0
 offset_right = 29.0
-offset_bottom = 31.0
+offset_bottom = 30.0
 text = "Tool"
 label_settings = SubResource("LabelSettings_i0gku")
 horizontal_alignment = 1
