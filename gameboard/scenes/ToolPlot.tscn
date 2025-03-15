@@ -16,13 +16,14 @@ shadow_size = 4
 shadow_color = Color(0, 0, 0, 0.266667)
 
 [node name="ToolPlot" type="Area2D"]
+texture_filter = 2
 script = ExtResource("1_i0gku")
 
 [node name="ToolIcon" type="Sprite2D" parent="."]
 z_index = 5
 z_as_relative = false
 position = Vector2(0, -5)
-scale = Vector2(0.6, 0.6)
+scale = Vector2(0.8, 0.8)
 texture = ExtResource("2_0yqva")
 
 [node name="Shadow" type="Sprite2D" parent="ToolIcon"]
@@ -30,7 +31,6 @@ self_modulate = Color(1, 1, 1, 0.313726)
 z_index = 1
 z_as_relative = false
 position = Vector2(0, 13.3333)
-scale = Vector2(0.78125, 0.729167)
 texture = ExtResource("3_dam0o")
 
 [node name="Highlight" type="Sprite2D" parent="."]

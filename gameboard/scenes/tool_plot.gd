@@ -1,7 +1,6 @@
 class_name ToolPlot
 extends Plot
 
-
 @export var tool_name : String
 @export var tool_function : String
 @export var icon : Texture2D
@@ -33,7 +32,3 @@ func handle_tool_pickup_or_drop():
 		GlobalCursor.is_holding_tool = false
 		GlobalCursor.reset_custom_cursor()
 		tool_icon.show()
-			
-			
-			
-		

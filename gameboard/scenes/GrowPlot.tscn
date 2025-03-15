@@ -8,6 +8,7 @@
 size = Vector2(58, 58)
 
 [node name="GrowPlot" type="Area2D"]
+texture_filter = 2
 script = ExtResource("1_nh3nx")
 
 [node name="Highlight" type="Sprite2D" parent="."]
