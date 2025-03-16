@@ -28,6 +28,7 @@ var growth_amount : float
 @onready var no_water_icon: Sprite2D = $NoWater
 @onready var till_particles: GPUParticles2D = $TilledIcon/TillParticles
 @onready var harvest_particles: GPUParticles2D = $CropArt/HarvestParticles
+@onready var leaf_particles: GPUParticles2D = $LeafParticles
 
 var is_mouse_over: bool = false
 
@@ -55,7 +56,7 @@ func _handle_tool_usage():
 
 func harvest_crop():
 	#print("Harvesting Plot: ", name)
-
+	leaf_particles.emitting = true
 	if not ready_to_harvest:
 		return
 
@@ -72,7 +73,7 @@ func harvest_crop():
 	growth_amount = 0.0
 	crop_art.hide()
 	tilled_icon.hide()
-	harvest_particles.emitting = false
+	harvest_particles.hide()
 
 func _plant_crop(crop : Crop):
 	if ready_to_plant and is_tilled:
@@ -82,7 +83,7 @@ func _plant_crop(crop : Crop):
 		growth_amount = 0.0  # Reset growth progress
 		crop_art.scale = Vector2(0.1, 0.1)  # Start small
 		crop_art.show()
-		GlobalCursor.float_text("%s planted!" % crop.crop_name, Color.DARK_GREEN)
+		#GlobalCursor.float_text("%s planted!" % crop.crop_name, Color.DARK_GREEN)
 
 func _handle_plant_growth(delta):
 	if not crop_planted or not planted_crop:
@@ -99,11 +100,6 @@ func _handle_plant_growth(delta):
 	var max_scale = 0.6
 	var scale_value = lerp(min_scale, max_scale, growth_amount)
 	crop_art.scale = Vector2(scale_value, scale_value)
-
-	# If the crop is fully grown, enable the highlight effect
-	var mat = crop_art.material as ShaderMaterial
-	if mat:
-		mat.set_shader_parameter("growth_amount", growth_amount)
 	
 	if growth_amount >= 1.0:
 		ready_to_harvest = true
@@ -113,7 +109,11 @@ func _handle_plant_growth(delta):
 
 	if ready_to_harvest and not harvest_particles.emitting:
 		harvest_particles.emitting = true
-
+		harvest_particles.show()
+	if not ready_to_harvest and harvest_particles.emitting:
+		harvest_particles.emitting = false
+		harvest_particles.hide()
+		
 #region ToolUsage
 func till_ground():
 	if ready_to_till and not is_tilled:
