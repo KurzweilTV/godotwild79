@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 GlobalCursor="*res://globals/cursor_handler.gd"
+Inventory="*res://globals/inventory.gd"
 
 [display]
 

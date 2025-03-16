@@ -55,6 +55,10 @@ func _handle_tool_usage():
 			_plant_crop(GlobalCursor.held_seed)
 
 func harvest_crop():
+	if not ready_to_harvest or not planted_crop:
+		return  # Don't proceed if there's nothing to harvest
+		
+	Inventory.add_item(planted_crop.crop_name, 1)
 	#print("Harvesting Plot: ", name)
 	leaf_particles.emitting = true
 	if not ready_to_harvest:
@@ -80,8 +84,8 @@ func _plant_crop(crop : Crop):
 		ready_to_plant = false
 		crop_planted = true
 		planted_crop = crop
-		growth_amount = 0.0  # Reset growth progress
-		crop_art.scale = Vector2(0.1, 0.1)  # Start small
+		growth_amount = 0.0
+		crop_art.scale = Vector2(0.1, 0.1)
 		crop_art.show()
 		#GlobalCursor.float_text("%s planted!" % crop.crop_name, Color.DARK_GREEN)
 

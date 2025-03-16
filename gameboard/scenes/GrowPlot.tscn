@@ -185,6 +185,7 @@ emitting = false
 amount = 10
 texture = ExtResource("7_eddpb")
 lifetime = 2.0
+preprocess = 0.5
 process_material = SubResource("ParticleProcessMaterial_xhy1o")
 
 [node name="NoWater" type="Sprite2D" parent="."]
