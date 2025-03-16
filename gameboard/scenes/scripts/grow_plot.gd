@@ -24,6 +24,10 @@ var growth_amount : float
 
 @onready var tilled_icon: Sprite2D = $TilledIcon
 @onready var highlight: Sprite2D = $Highlight
+@onready var crop_art: Sprite2D = $CropArt
+@onready var no_water_icon: Sprite2D = $NoWater
+@onready var till_particles: GPUParticles2D = $TilledIcon/TillParticles
+@onready var harvest_particles: GPUParticles2D = $CropArt/HarvestParticles
 
 var is_mouse_over: bool = false
 
@@ -66,14 +70,19 @@ func harvest_crop():
 	ready_to_till = true
 	water_level = 0
 	growth_amount = 0.0
+	crop_art.hide()
 	tilled_icon.hide()
+	harvest_particles.emitting = false
 
 func _plant_crop(crop : Crop):
 	if ready_to_plant and is_tilled:
-		#print("Planting: ", crop.crop_name)
 		ready_to_plant = false
 		crop_planted = true
 		planted_crop = crop
+		growth_amount = 0.0  # Reset growth progress
+		crop_art.scale = Vector2(0.1, 0.1)  # Start small
+		crop_art.show()
+		GlobalCursor.float_text("%s planted!" % crop.crop_name, Color.DARK_GREEN)
 
 func _handle_plant_growth(delta):
 	if not crop_planted or not planted_crop:
@@ -84,12 +93,26 @@ func _handle_plant_growth(delta):
 	
 	growth_amount += delta / planted_crop.growth_time
 	growth_amount = clamp(growth_amount, 0.0, 1.0)
+
+	# Scale crop_art dynamically
+	var min_scale = 0.1
+	var max_scale = 0.6
+	var scale_value = lerp(min_scale, max_scale, growth_amount)
+	crop_art.scale = Vector2(scale_value, scale_value)
+
+	# If the crop is fully grown, enable the highlight effect
+	var mat = crop_art.material as ShaderMaterial
+	if mat:
+		mat.set_shader_parameter("growth_amount", growth_amount)
 	
 	if growth_amount >= 1.0:
 		ready_to_harvest = true
 		is_growing = false
 	else:
 		is_growing = true
+
+	if ready_to_harvest and not harvest_particles.emitting:
+		harvest_particles.emitting = true
 
 #region ToolUsage
 func till_ground():
@@ -98,6 +121,7 @@ func till_ground():
 		ready_to_till = false
 		is_tilled = true
 		ready_to_plant = true
+		till_particles.emitting = true
 		
 func change_water(amount: float):
 	water_level = clamp(water_level + amount, 0, 100)
@@ -108,6 +132,9 @@ func _water_drain(delta):
 		var alpha = (water_level - water_min) / (water_max - water_min)
 		water_icon.self_modulate.a = alpha
 	change_water(-water_drying_rate * delta)
+	if planted_crop and water_level <= planted_crop.water_needed and not ready_to_harvest:
+		no_water_icon.show()
+	else: no_water_icon.hide()
 	
 #region SignalFunctions
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:

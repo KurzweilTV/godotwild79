@@ -80,227 +80,51 @@ tile_set = SubResource("TileSet_iclgn")
 
 [node name="GrowPlot1" parent="Plots" instance=ExtResource("9_kjxxd")]
 position = Vector2(160, 160)
-crop_planted = false
-crop_name = ""
-watered = false
-water_level = 0.0
-water_max = 100.0
-water_min = 0.0
-water_drying_rate = 7
-ready_to_till = true
-is_tilled = false
-ready_to_plant = false
-ready_to_harvest = false
 
 [node name="GrowPlot2" parent="Plots" instance=ExtResource("9_kjxxd")]
 position = Vector2(224, 160)
-crop_planted = false
-crop_name = ""
-watered = false
-water_level = 0.0
-water_max = 100.0
-water_min = 0.0
-water_drying_rate = 7
-ready_to_till = true
-is_tilled = false
-ready_to_plant = false
-ready_to_harvest = false
 
 [node name="GrowPlot3" parent="Plots" instance=ExtResource("9_kjxxd")]
 position = Vector2(288, 160)
-crop_planted = false
-crop_name = ""
-watered = false
-water_level = 0.0
-water_max = 100.0
-water_min = 0.0
-water_drying_rate = 7
-ready_to_till = true
-is_tilled = false
-ready_to_plant = false
-ready_to_harvest = false
 
 [node name="GrowPlot4" parent="Plots" instance=ExtResource("9_kjxxd")]
 position = Vector2(352, 160)
-crop_planted = false
-crop_name = ""
-watered = false
-water_level = 0.0
-water_max = 100.0
-water_min = 0.0
-water_drying_rate = 7
-ready_to_till = true
-is_tilled = false
-ready_to_plant = false
-ready_to_harvest = false
 
 [node name="GrowPlot5" parent="Plots" instance=ExtResource("9_kjxxd")]
 position = Vector2(160, 224)
-crop_planted = false
-crop_name = ""
-watered = false
-water_level = 0.0
-water_max = 100.0
-water_min = 0.0
-water_drying_rate = 7
-ready_to_till = true
-is_tilled = false
-ready_to_plant = false
-ready_to_harvest = false
 
 [node name="GrowPlot6" parent="Plots" instance=ExtResource("9_kjxxd")]
 position = Vector2(224, 224)
-crop_planted = false
-crop_name = ""
-watered = false
-water_level = 0.0
-water_max = 100.0
-water_min = 0.0
-water_drying_rate = 7
-ready_to_till = true
-is_tilled = false
-ready_to_plant = false
-ready_to_harvest = false
 
 [node name="GrowPlot7" parent="Plots" instance=ExtResource("9_kjxxd")]
 position = Vector2(288, 224)
-crop_planted = false
-crop_name = ""
-watered = false
-water_level = 0.0
-water_max = 100.0
-water_min = 0.0
-water_drying_rate = 7
-ready_to_till = true
-is_tilled = false
-ready_to_plant = false
-ready_to_harvest = false
 
 [node name="GrowPlot8" parent="Plots" instance=ExtResource("9_kjxxd")]
 position = Vector2(352, 224)
-crop_planted = false
-crop_name = ""
-watered = false
-water_level = 0.0
-water_max = 100.0
-water_min = 0.0
-water_drying_rate = 7
-ready_to_till = true
-is_tilled = false
-ready_to_plant = false
-ready_to_harvest = false
 
 [node name="GrowPlot9" parent="Plots" instance=ExtResource("9_kjxxd")]
 position = Vector2(160, 288)
-crop_planted = false
-crop_name = ""
-watered = false
-water_level = 0.0
-water_max = 100.0
-water_min = 0.0
-water_drying_rate = 7
-ready_to_till = true
-is_tilled = false
-ready_to_plant = false
-ready_to_harvest = false
 
 [node name="GrowPlot10" parent="Plots" instance=ExtResource("9_kjxxd")]
 position = Vector2(224, 288)
-crop_planted = false
-crop_name = ""
-watered = false
-water_level = 0.0
-water_max = 100.0
-water_min = 0.0
-water_drying_rate = 7
-ready_to_till = true
-is_tilled = false
-ready_to_plant = false
-ready_to_harvest = false
 
 [node name="GrowPlot11" parent="Plots" instance=ExtResource("9_kjxxd")]
 position = Vector2(288, 288)
-crop_planted = false
-crop_name = ""
-watered = false
-water_level = 0.0
-water_max = 100.0
-water_min = 0.0
-water_drying_rate = 7
-ready_to_till = true
-is_tilled = false
-ready_to_plant = false
-ready_to_harvest = false
 
 [node name="GrowPlot12" parent="Plots" instance=ExtResource("9_kjxxd")]
 position = Vector2(352, 288)
-crop_planted = false
-crop_name = ""
-watered = false
-water_level = 0.0
-water_max = 100.0
-water_min = 0.0
-water_drying_rate = 7
-ready_to_till = true
-is_tilled = false
-ready_to_plant = false
-ready_to_harvest = false
 
 [node name="GrowPlot13" parent="Plots" instance=ExtResource("9_kjxxd")]
 position = Vector2(160, 352)
-crop_planted = false
-crop_name = ""
-watered = false
-water_level = 0.0
-water_max = 100.0
-water_min = 0.0
-water_drying_rate = 7
-ready_to_till = true
-is_tilled = false
-ready_to_plant = false
-ready_to_harvest = false
 
 [node name="GrowPlot14" parent="Plots" instance=ExtResource("9_kjxxd")]
 position = Vector2(224, 352)
-crop_planted = false
-crop_name = ""
-watered = false
-water_level = 0.0
-water_max = 100.0
-water_min = 0.0
-water_drying_rate = 7
-ready_to_till = true
-is_tilled = false
-ready_to_plant = false
-ready_to_harvest = false
 
 [node name="GrowPlot15" parent="Plots" instance=ExtResource("9_kjxxd")]
 position = Vector2(288, 352)
-crop_planted = false
-crop_name = ""
-watered = false
-water_level = 0.0
-water_max = 100.0
-water_min = 0.0
-water_drying_rate = 7
-ready_to_till = true
-is_tilled = false
-ready_to_plant = false
-ready_to_harvest = false
 
 [node name="GrowPlot16" parent="Plots" instance=ExtResource("9_kjxxd")]
 position = Vector2(352, 352)
-crop_planted = false
-crop_name = ""
-watered = false
-water_level = 0.0
-water_max = 100.0
-water_min = 0.0
-water_drying_rate = 7
-ready_to_till = true
-is_tilled = false
-ready_to_plant = false
-ready_to_harvest = false
 
 [node name="Tools" type="Node2D" parent="."]
 

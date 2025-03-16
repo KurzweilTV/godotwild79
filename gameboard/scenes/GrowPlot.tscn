@@ -1,12 +1,116 @@
-[gd_scene load_steps=6 format=3 uid="uid://dprbr4w2jlt4s"]
+[gd_scene load_steps=25 format=3 uid="uid://dprbr4w2jlt4s"]
 
 [ext_resource type="Script" uid="uid://c7e4hlifk3lmt" path="res://gameboard/scenes/scripts/grow_plot.gd" id="1_nh3nx"]
 [ext_resource type="Texture2D" uid="uid://bg3p6kl3j40nm" path="res://gameboard/art/highlight.png" id="1_nsnlj"]
 [ext_resource type="Texture2D" uid="uid://bwb00y38kc23g" path="res://tools/art/tilled_ground.png" id="3_4dr1b"]
 [ext_resource type="Texture2D" uid="uid://dvlmnji7y43oj" path="res://tools/art/watered.png" id="3_738fb"]
+[ext_resource type="Texture2D" uid="uid://bjrx47fw1vwv8" path="res://crops/art/crop_growing.png" id="5_7cdwc"]
+[ext_resource type="Shader" uid="uid://dtavsjmdmlx7g" path="res://gameboard/scenes/shaders/WindSway.gdshader" id="5_gxpot"]
+[ext_resource type="Texture2D" uid="uid://bun8muss468yk" path="res://crops/art/NoWater.png" id="6_lnyr6"]
+[ext_resource type="Texture2D" uid="uid://c7kwm2uiu0otl" path="res://crops/art/sparkle_particlepng.png" id="7_eddpb"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_gxpot"]
+size = Vector2(8, 8)
+
+[sub_resource type="Curve" id="Curve_gxpot"]
+_data = [Vector2(0.0148515, 0.977528), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_eddpb"]
+curve = SubResource("Curve_gxpot")
+
+[sub_resource type="Curve" id="Curve_xhy1o"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.138614, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_6ii65"]
+curve = SubResource("Curve_xhy1o")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_h5cwv"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(16, 16, 1)
+angle_min = 1.07288e-05
+angle_max = 360.0
+direction = Vector3(0, -1, 0)
+spread = 180.0
+initial_velocity_max = 150.0
+gravity = Vector3(0, 200, 0)
+damping_min = 40.0
+damping_max = 60.0
+scale_min = 0.0
+scale_curve = SubResource("CurveTexture_6ii65")
+color = Color(0.451388, 0.250882, 9.62615e-08, 1)
+alpha_curve = SubResource("CurveTexture_eddpb")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nsnlj"]
 size = Vector2(58, 58)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eddpb"]
+shader = ExtResource("5_gxpot")
+shader_parameter/sway_strength = 4.0
+shader_parameter/sway_speed = 3.5
+shader_parameter/sway_frequency = 3.0
+shader_parameter/height_falloff = 1.5
+
+[sub_resource type="Curve" id="Curve_eddpb"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.831683, 0.449438), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_xhy1o"]
+curve = SubResource("Curve_eddpb")
+
+[sub_resource type="Gradient" id="Gradient_eddpb"]
+offsets = PackedFloat32Array(0.0625, 0.4375, 1)
+colors = PackedColorArray(1, 1, 0.941176, 1, 1, 1, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_xhy1o"]
+gradient = SubResource("Gradient_eddpb")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xhy1o"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(32, 32, 1)
+gravity = Vector3(0, -10, 0)
+scale_min = 0.1
+color_ramp = SubResource("GradientTexture1D_xhy1o")
+alpha_curve = SubResource("CurveTexture_xhy1o")
+
+[sub_resource type="Animation" id="Animation_lnyr6"]
+resource_name = "bounce"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-16, -0.25, 0, 0.25, 0, -22, -0.25, 0, 0.25, 0, -16, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2, 4)
+}
+
+[sub_resource type="Animation" id="Animation_gxpot"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-22, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eddpb"]
+_data = {
+&"RESET": SubResource("Animation_gxpot"),
+&"bounce": SubResource("Animation_lnyr6")
+}
 
 [node name="GrowPlot" type="Area2D"]
 texture_filter = 2
@@ -22,6 +126,15 @@ z_index = 2
 z_as_relative = false
 texture = ExtResource("3_4dr1b")
 
+[node name="TillParticles" type="GPUParticles2D" parent="TilledIcon"]
+emitting = false
+amount = 15
+texture = SubResource("PlaceholderTexture2D_gxpot")
+one_shot = true
+explosiveness = 0.9
+trail_lifetime = 0.1
+process_material = SubResource("ParticleProcessMaterial_h5cwv")
+
 [node name="WaterIcon" type="Sprite2D" parent="."]
 z_index = 3
 texture = ExtResource("3_738fb")
@@ -29,6 +142,39 @@ texture = ExtResource("3_738fb")
 [node name="DetectionArea" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource("RectangleShape2D_nsnlj")
+
+[node name="CropArt" type="Sprite2D" parent="."]
+visible = false
+z_index = 5
+z_as_relative = false
+material = SubResource("ShaderMaterial_eddpb")
+position = Vector2(0, 22)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_7cdwc")
+offset = Vector2(0, -64)
+
+[node name="HarvestParticles" type="GPUParticles2D" parent="CropArt"]
+texture_filter = 1
+position = Vector2(0, -40)
+emitting = false
+amount = 10
+texture = ExtResource("7_eddpb")
+lifetime = 2.0
+preprocess = 0.5
+process_material = SubResource("ParticleProcessMaterial_xhy1o")
+
+[node name="NoWater" type="Sprite2D" parent="."]
+visible = false
+z_index = 3
+position = Vector2(16, -22)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("6_lnyr6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="NoWater"]
+libraries = {
+&"": SubResource("AnimationLibrary_eddpb")
+}
+autoplay = "bounce"
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
