@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dprbr4w2jlt4s"]
+[gd_scene load_steps=34 format=3 uid="uid://dprbr4w2jlt4s"]
 
 [ext_resource type="Script" uid="uid://c7e4hlifk3lmt" path="res://gameboard/scenes/scripts/grow_plot.gd" id="1_nh3nx"]
 [ext_resource type="Texture2D" uid="uid://bg3p6kl3j40nm" path="res://gameboard/art/highlight.png" id="1_nsnlj"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://bvn7xqnuckhtv" path="res://gameboard/scenes/sounds/till_audio.mp3" id="10_6ii65"]
 [ext_resource type="AudioStream" uid="uid://bla8wr41dc3bi" path="res://gameboard/scenes/sounds/water_sound.mp3" id="11_h5cwv"]
 [ext_resource type="AudioStream" uid="uid://cr6ibx2f3jhug" path="res://gameboard/scenes/sounds/HarvestSound.mp3" id="12_v7cef"]
+[ext_resource type="AudioStream" uid="uid://c0e2lld42eski" path="res://gameboard/scenes/sounds/SeedSound.mp3" id="13_k1wvk"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_gxpot"]
 size = Vector2(5, 5)
@@ -259,6 +260,12 @@ bus = &"SFX"
 [node name="HarvestSound" type="AudioStreamPlayer2D" parent="Sounds"]
 unique_name_in_owner = true
 stream = ExtResource("12_v7cef")
+max_polyphony = 4
+bus = &"SFX"
+
+[node name="SeedSound" type="AudioStreamPlayer2D" parent="Sounds"]
+unique_name_in_owner = true
+stream = ExtResource("13_k1wvk")
 max_polyphony = 4
 bus = &"SFX"
 

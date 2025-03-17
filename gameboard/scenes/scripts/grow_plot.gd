@@ -51,7 +51,7 @@ func _handle_tool_usage():
 			water_particles.emitting = true
 			change_water(100)
 			if not %WaterSound.playing:
-				%WaterSound.pitch_scale = randf_range(0.9, 1.1)
+				%WaterSound.pitch_scale = randf_range(0.7, 1.0)
 				%WaterSound.play()
 		"Hoe":
 			till_ground()
@@ -64,7 +64,7 @@ func harvest_crop():
 	if not ready_to_harvest or not planted_crop:
 		return  # Stop if there's nothing to harvest
 	
-	%HarvestSound.pitch_scale = randf_range(0.8, 1.0)
+	%HarvestSound.pitch_scale = randf_range(0.7, 0.9)
 	%HarvestSound.play()
 
 	var harvest_name := planted_crop.crop_name
@@ -104,6 +104,9 @@ func _plant_crop(crop : Crop):
 		crop_art.scale = Vector2(0.1, 0.1)
 		crop_art.texture = crop.sprite
 		crop_art.show()
+		%SeedSound.pitch_scale = randf_range(0.7, 1.0)
+		%SeedSound.play()
+		
 		#GlobalCursor.float_text("%s planted!" % crop.crop_name, Color.DARK_GREEN)
 
 func _handle_plant_growth(delta):
