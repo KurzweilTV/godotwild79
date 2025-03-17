@@ -77,6 +77,20 @@ scale_min = 0.1
 color_ramp = SubResource("GradientTexture1D_xhy1o")
 alpha_curve = SubResource("CurveTexture_xhy1o")
 
+[sub_resource type="Animation" id="Animation_gxpot"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-22, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
 [sub_resource type="Animation" id="Animation_lnyr6"]
 resource_name = "bounce"
 length = 4.0
@@ -91,20 +105,6 @@ tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0),
 "points": PackedFloat32Array(-16, -0.25, 0, 0.25, 0, -22, -0.25, 0, 0.25, 0, -16, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 2, 4)
-}
-
-[sub_resource type="Animation" id="Animation_gxpot"]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position:y")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-22, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_eddpb"]

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Crop" load_steps=3 format=3 uid="uid://cu4xalpgv2p7h"]
+
+[ext_resource type="Script" uid="uid://ddw5m4nnn0bf6" path="res://crops/scripts/crop_data.gd" id="1_8td7m"]
+[ext_resource type="Texture2D" uid="uid://dr0nm5gp15c2o" path="res://crops/art/grass1.png" id="2_uiqg1"]
+
+[resource]
+script = ExtResource("1_8td7m")
+crop_name = "Emberberry"
+growth_time = 15.0
+water_needed = 60.0
+sprite = ExtResource("2_uiqg1")
+harvest_yield = 1
+metadata/_custom_type_script = "uid://ddw5m4nnn0bf6"

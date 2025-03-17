@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://bjahju06fp1ei"]
+[gd_scene load_steps=29 format=4 uid="uid://bjahju06fp1ei"]
 
 [ext_resource type="Texture2D" uid="uid://bjhq4rlnydyqg" path="res://gameboard/art/tileGrass1.png" id="1_2rh0h"]
 [ext_resource type="Texture2D" uid="uid://chlxvkipkc2u6" path="res://gameboard/art/tileGrass2.png" id="2_kjxxd"]
@@ -17,6 +17,8 @@
 [ext_resource type="Texture2D" uid="uid://nhmphbsfa1f8" path="res://tools/art/Seeds_Blue.png" id="15_hhj1e"]
 [ext_resource type="Resource" uid="uid://dlyk8fml2ohod" path="res://crops/resources/glowroot.tres" id="15_qol7g"]
 [ext_resource type="Texture2D" uid="uid://b7qxvfgvv006w" path="res://tools/art/Seeds_Pink.png" id="16_jcyhx"]
+[ext_resource type="Resource" uid="uid://cu4xalpgv2p7h" path="res://crops/resources/emberberry.tres" id="17_qol7g"]
+[ext_resource type="Resource" uid="uid://7k0t487li10y" path="res://crops/resources/dewblossom.tres" id="19_nuy2r"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jcyhx"]
 texture = ExtResource("1_2rh0h")
@@ -159,9 +161,13 @@ position = Vector2(53, 256)
 tool_name = "Emberberry"
 tool_function = "Emberberry"
 icon = ExtResource("16_jcyhx")
+is_seed = true
+crop = ExtResource("17_qol7g")
 
 [node name="SeedPlot3" parent="Tools" instance=ExtResource("10_1m0n5")]
 position = Vector2(54, 319)
 tool_name = "Dewblossom"
 tool_function = "Dewblossom"
 icon = ExtResource("15_hhj1e")
+is_seed = true
+crop = ExtResource("19_nuy2r")

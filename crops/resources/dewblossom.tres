@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Crop" load_steps=3 format=3 uid="uid://7k0t487li10y"]
+
+[ext_resource type="Script" uid="uid://ddw5m4nnn0bf6" path="res://crops/scripts/crop_data.gd" id="1_0v3ee"]
+[ext_resource type="Texture2D" uid="uid://ctnhxkpc5idmk" path="res://crops/art/grass4.png" id="2_w4nc7"]
+
+[resource]
+script = ExtResource("1_0v3ee")
+crop_name = "Dewblossom"
+growth_time = 30.0
+water_needed = 10.0
+sprite = ExtResource("2_w4nc7")
+harvest_yield = 1
+metadata/_custom_type_script = "uid://ddw5m4nnn0bf6"

@@ -58,7 +58,7 @@ func harvest_crop():
 	if not ready_to_harvest or not planted_crop:
 		return  # Don't proceed if there's nothing to harvest
 		
-	Inventory.add_item(planted_crop.crop_name, 1)
+	Inventory.add_item(planted_crop.crop_name, planted_crop.harvest_yield)
 	#print("Harvesting Plot: ", name)
 	leaf_particles.emitting = true
 	if not ready_to_harvest:
@@ -80,12 +80,13 @@ func harvest_crop():
 	harvest_particles.hide()
 
 func _plant_crop(crop : Crop):
-	if ready_to_plant and is_tilled:
+	if ready_to_plant and is_tilled and crop:
 		ready_to_plant = false
 		crop_planted = true
 		planted_crop = crop
 		growth_amount = 0.0
 		crop_art.scale = Vector2(0.1, 0.1)
+		crop_art.texture = crop.sprite
 		crop_art.show()
 		#GlobalCursor.float_text("%s planted!" % crop.crop_name, Color.DARK_GREEN)
 
