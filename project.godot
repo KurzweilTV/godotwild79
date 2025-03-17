@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 
 GlobalCursor="*res://globals/cursor_handler.gd"
 Inventory="*res://globals/inventory.gd"
+MessageBus="*res://globals/message_bus.gd"
 
 [display]
 
@@ -30,3 +31,9 @@ window/stretch/scale=2.0
 window/stretch/scale_mode="integer"
 mouse_cursor/custom_image="uid://d05rlc7f7b14n"
 mouse_cursor/custom_image_hotspot=Vector2(10, 0)
+
+[file_customization]
+
+folder_colors={
+"res://globals/": "red"
+}
