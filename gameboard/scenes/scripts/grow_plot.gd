@@ -27,6 +27,7 @@ var growth_amount : float
 @onready var crop_art: Sprite2D = $CropArt
 @onready var no_water_icon: Sprite2D = $NoWater
 @onready var till_particles: GPUParticles2D = $TilledIcon/TillParticles
+@onready var water_particles: GPUParticles2D = $TilledIcon/WaterParticles
 @onready var harvest_particles: GPUParticles2D = $CropArt/HarvestParticles
 @onready var leaf_particles: GPUParticles2D = $LeafParticles
 @onready var sounds: Node = $Sounds
@@ -47,6 +48,7 @@ func _process(delta: float) -> void:
 func _handle_tool_usage():
 	match GlobalCursor.tool_held:
 		"WaterBucket":
+			water_particles.emitting = true
 			change_water(100)
 		"Hoe":
 			till_ground()
@@ -57,7 +59,7 @@ func _handle_tool_usage():
 
 func harvest_crop():
 	if not ready_to_harvest or not planted_crop:
-		return  # Don't proceed if there's nothing to harvest
+		return  # Stop if there's nothing to harvest
 		
 	Inventory.add_item(planted_crop.crop_name, planted_crop.harvest_yield)
 	#print("Harvesting Plot: ", name)
@@ -93,7 +95,7 @@ func _plant_crop(crop : Crop):
 
 func _handle_plant_growth(delta):
 	if not crop_planted or not planted_crop:
-		return  # No crop planted, exit early
+		return  # No crop planted
 	
 	if water_level < planted_crop.water_needed:
 		return  # Not enough water to grow
@@ -101,7 +103,7 @@ func _handle_plant_growth(delta):
 	growth_amount += delta / planted_crop.growth_time
 	growth_amount = clamp(growth_amount, 0.0, 1.0)
 
-	# Scale crop_art dynamically
+	# Grow crop_art dynamically
 	var min_scale = 0.1
 	var max_scale = 0.6
 	var scale_value = lerp(min_scale, max_scale, growth_amount)
