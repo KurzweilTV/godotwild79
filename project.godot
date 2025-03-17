@@ -35,5 +35,6 @@ mouse_cursor/custom_image_hotspot=Vector2(10, 0)
 [file_customization]
 
 folder_colors={
+"res://gameboard/scenes/sounds/": "yellow",
 "res://globals/": "red"
 }

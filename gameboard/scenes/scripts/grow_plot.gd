@@ -29,6 +29,7 @@ var growth_amount : float
 @onready var till_particles: GPUParticles2D = $TilledIcon/TillParticles
 @onready var harvest_particles: GPUParticles2D = $CropArt/HarvestParticles
 @onready var leaf_particles: GPUParticles2D = $LeafParticles
+@onready var sounds: Node = $Sounds
 
 var is_mouse_over: bool = false
 
@@ -127,6 +128,9 @@ func till_ground():
 		is_tilled = true
 		ready_to_plant = true
 		till_particles.emitting = true
+		
+		%TillSound.pitch_scale = randf_range(0.9, 1.1)
+		%TillSound.play()
 		
 func change_water(amount: float):
 	water_level = clamp(water_level + amount, 0, 100)

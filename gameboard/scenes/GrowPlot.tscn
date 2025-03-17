@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dprbr4w2jlt4s"]
+[gd_scene load_steps=30 format=3 uid="uid://dprbr4w2jlt4s"]
 
 [ext_resource type="Script" uid="uid://c7e4hlifk3lmt" path="res://gameboard/scenes/scripts/grow_plot.gd" id="1_nh3nx"]
 [ext_resource type="Texture2D" uid="uid://bg3p6kl3j40nm" path="res://gameboard/art/highlight.png" id="1_nsnlj"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bun8muss468yk" path="res://crops/art/NoWater.png" id="6_lnyr6"]
 [ext_resource type="Texture2D" uid="uid://c7kwm2uiu0otl" path="res://crops/art/sparkle_particlepng.png" id="7_eddpb"]
 [ext_resource type="Texture2D" uid="uid://2cgaa3s7vltw" path="res://crops/art/leaf_particle.png" id="9_xhy1o"]
+[ext_resource type="AudioStream" uid="uid://bvn7xqnuckhtv" path="res://gameboard/scenes/sounds/till_audio.mp3" id="10_6ii65"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_gxpot"]
 size = Vector2(8, 8)
@@ -211,6 +212,15 @@ one_shot = true
 explosiveness = 1.0
 draw_order = 0
 process_material = SubResource("ParticleProcessMaterial_6ii65")
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="TillSound" type="AudioStreamPlayer2D" parent="Sounds"]
+unique_name_in_owner = true
+stream = ExtResource("10_6ii65")
+volume_db = -10.0
+max_polyphony = 6
+bus = &"SFX"
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
