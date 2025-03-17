@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://dprbr4w2jlt4s"]
+[gd_scene load_steps=33 format=3 uid="uid://dprbr4w2jlt4s"]
 
 [ext_resource type="Script" uid="uid://c7e4hlifk3lmt" path="res://gameboard/scenes/scripts/grow_plot.gd" id="1_nh3nx"]
 [ext_resource type="Texture2D" uid="uid://bg3p6kl3j40nm" path="res://gameboard/art/highlight.png" id="1_nsnlj"]
@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://c7kwm2uiu0otl" path="res://crops/art/sparkle_particlepng.png" id="7_eddpb"]
 [ext_resource type="Texture2D" uid="uid://2cgaa3s7vltw" path="res://crops/art/leaf_particle.png" id="9_xhy1o"]
 [ext_resource type="AudioStream" uid="uid://bvn7xqnuckhtv" path="res://gameboard/scenes/sounds/till_audio.mp3" id="10_6ii65"]
+[ext_resource type="AudioStream" uid="uid://bla8wr41dc3bi" path="res://gameboard/scenes/sounds/water_sound.mp3" id="11_h5cwv"]
+[ext_resource type="AudioStream" uid="uid://cr6ibx2f3jhug" path="res://gameboard/scenes/sounds/HarvestSound.mp3" id="12_v7cef"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_gxpot"]
 size = Vector2(5, 5)
@@ -234,7 +236,7 @@ z_index = 4
 emitting = false
 amount = 10
 texture = ExtResource("9_xhy1o")
-lifetime = 2.0
+lifetime = 3.0
 one_shot = true
 explosiveness = 1.0
 draw_order = 0
@@ -245,15 +247,19 @@ process_material = SubResource("ParticleProcessMaterial_6ii65")
 [node name="TillSound" type="AudioStreamPlayer2D" parent="Sounds"]
 unique_name_in_owner = true
 stream = ExtResource("10_6ii65")
-volume_db = -10.0
-max_polyphony = 6
+volume_db = -5.0
+max_polyphony = 4
 bus = &"SFX"
 
-[node name="TillSound2" type="AudioStreamPlayer2D" parent="Sounds"]
+[node name="WaterSound" type="AudioStreamPlayer2D" parent="Sounds"]
 unique_name_in_owner = true
-stream = ExtResource("10_6ii65")
-volume_db = -10.0
-max_polyphony = 6
+stream = ExtResource("11_h5cwv")
+bus = &"SFX"
+
+[node name="HarvestSound" type="AudioStreamPlayer2D" parent="Sounds"]
+unique_name_in_owner = true
+stream = ExtResource("12_v7cef")
+max_polyphony = 4
 bus = &"SFX"
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]

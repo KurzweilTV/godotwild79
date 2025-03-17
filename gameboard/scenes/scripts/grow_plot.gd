@@ -50,6 +50,9 @@ func _handle_tool_usage():
 		"WaterBucket":
 			water_particles.emitting = true
 			change_water(100)
+			if not %WaterSound.playing:
+				%WaterSound.pitch_scale = randf_range(0.9, 1.1)
+				%WaterSound.play()
 		"Hoe":
 			till_ground()
 		"Scythe":		
@@ -62,7 +65,9 @@ func harvest_crop():
 		return  # Stop if there's nothing to harvest
 		
 	Inventory.add_item(planted_crop.crop_name, planted_crop.harvest_yield)
-	#print("Harvesting Plot: ", name)
+	%HarvestSound.pitch_scale = randf_range(0.8, 1.0)
+	%HarvestSound.play()
+
 	leaf_particles.emitting = true
 	if not ready_to_harvest:
 		return
@@ -131,7 +136,7 @@ func till_ground():
 		ready_to_plant = true
 		till_particles.emitting = true
 		
-		%TillSound.pitch_scale = randf_range(0.9, 1.1)
+		%TillSound.pitch_scale = randf_range(0.7, 0.9)
 		%TillSound.play()
 		
 func change_water(amount: float):
