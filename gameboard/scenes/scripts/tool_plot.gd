@@ -27,20 +27,41 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 
 func handle_tool_pickup_or_drop():
 	if tool_present and not GlobalCursor.is_holding_tool:
-		#print("Picked up %s" % tool_name)
+		# Pick up the tool
 		tool_present = false
 		GlobalCursor.is_holding_tool = true
 		GlobalCursor.held_seed = crop
 		GlobalCursor.tool_held = tool_name
+		GlobalCursor.tool_source = self  # Store original tool location
 		GlobalCursor.set_custom_cursor(icon)
 		tool_icon.hide()
-	elif not tool_present and GlobalCursor.is_holding_tool:
-		#print("Put Down %s" % tool_name)
-		tool_present = true
-		GlobalCursor.is_holding_tool = false
-		GlobalCursor.reset_custom_cursor()
-		tool_icon.show()
 
+	elif GlobalCursor.is_holding_tool:
+		# If holding a tool and clicking on its original spot, return it manually
+		if GlobalCursor.tool_source == self:
+			return_tool()
+			GlobalCursor.is_holding_tool = false
+			GlobalCursor.tool_source = null
+			GlobalCursor.reset_custom_cursor()
+		
+		# If holding a different tool, swap them
+		elif GlobalCursor.tool_source and GlobalCursor.tool_source != self:
+			# Return the previously held tool to its original spot
+			GlobalCursor.tool_source.return_tool()
+			
+			# Pick up the new tool
+			tool_present = false
+			GlobalCursor.is_holding_tool = true
+			GlobalCursor.tool_source = self  # Update tool source
+			GlobalCursor.tool_held = tool_name
+			GlobalCursor.held_seed = crop
+			GlobalCursor.set_custom_cursor(icon)
+			tool_icon.hide()
+
+# Function to return the tool to its original ToolPlot
+func return_tool():
+	tool_present = true
+	tool_icon.show()
 
 func _on_mouse_entered() -> void:
 	highlight.show()
