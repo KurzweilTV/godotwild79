@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=4 uid="uid://bjahju06fp1ei"]
+[gd_scene load_steps=41 format=4 uid="uid://bjahju06fp1ei"]
 
 [ext_resource type="Script" uid="uid://clfyqgi8cidrb" path="res://gameboard/main.gd" id="1_0titf"]
 [ext_resource type="Texture2D" uid="uid://bjhq4rlnydyqg" path="res://gameboard/art/tileGrass1.png" id="1_2rh0h"]
@@ -25,7 +25,9 @@
 [ext_resource type="Texture2D" uid="uid://dr0nm5gp15c2o" path="res://crops/art/grass1.png" id="21_7624x"]
 [ext_resource type="LabelSettings" uid="uid://k7ywr16t344m" path="res://ui/inv_label_settings.tres" id="21_t4dus"]
 [ext_resource type="Texture2D" uid="uid://ctnhxkpc5idmk" path="res://crops/art/grass4.png" id="22_46mt3"]
+[ext_resource type="Texture2D" uid="uid://c7kwm2uiu0otl" path="res://crops/art/sparkle_particlepng.png" id="23_fnfwq"]
 [ext_resource type="AudioStream" uid="uid://duaidpw3p8e67" path="res://audio/music/FarmersMarket.mp3" id="26_nu03s"]
+[ext_resource type="PackedScene" uid="uid://d38jq6ycjg8fp" path="res://gameboard/decoration/grass_deco.tscn" id="27_nu03s"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jcyhx"]
 texture = ExtResource("1_2rh0h")
@@ -78,6 +80,28 @@ sources/5 = SubResource("TileSetAtlasSource_t4dus")
 sources/6 = SubResource("TileSetAtlasSource_j3nv7")
 sources/7 = SubResource("TileSetAtlasSource_7624x")
 
+[sub_resource type="Gradient" id="Gradient_jgy31"]
+offsets = PackedFloat32Array(0.0170455, 0.142045, 0.301136, 0.448864, 0.590909, 0.710227, 0.806818, 0.892045, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_keahd"]
+gradient = SubResource("Gradient_jgy31")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nu03s"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(48, 48, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+angle_min = -126.0
+angle_max = 24.0
+direction = Vector3(1, -5, 0)
+initial_velocity_min = 75.0
+initial_velocity_max = 283.34
+gravity = Vector3(0, 500, 0)
+scale_min = 0.3
+scale_max = 0.6
+color_ramp = SubResource("GradientTexture1D_keahd")
+
 [node name="Main" type="Node2D"]
 texture_filter = 2
 script = ExtResource("1_0titf")
@@ -85,6 +109,56 @@ script = ExtResource("1_0titf")
 [node name="Gameboard" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAALAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAMAAEAAAAAAAAAAAAMAAIAAAAAAAAAAAAMAAMAAAAAAAAAAAAMAAQAAAAAAAAAAAAMAAUAAAAAAAAAAAAMAAYAAAAAAAAAAAAMAAcAAAAAAAAAAAALAAcAAAAAAAAAAAAKAAcAAAAAAAAAAAAJAAcAAAAAAAAAAAAIAAcAAAAAAAAAAAAHAAcAAAAAAAAAAAAGAAcAAAAAAAAAAAAGAAYAAAAAAAAAAAAFAAYAAwAAAAAAAAAEAAYAAwAAAAAAAAAEAAcAAAAAAAAAAAADAAcAAAAAAAAAAAACAAcAAAAAAAAAAAABAAcAAAAAAAAAAAABAAYAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAACAAYAAwAAAAAAAAADAAYAAwAAAAAAAAAFAAcAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAEAAAAAAAAAAAADAAMABwAAAAAAAAADAAIABgAAAAAAAAADAAEABAAAAAAAAAACAAEABAAAAAAAAAABAAEAAAAAAAAAAAABAAIAAgAAAAAAAAABAAMAAgAAAAAAAAABAAQAAgAAAAAAAAABAAUAAgAAAAAAAAACAAUABgAAAAAAAAACAAQABgAAAAAAAAACAAMABgAAAAAAAAACAAIABgAAAAAAAAADAAQABgAAAAAAAAADAAUABwAAAAAAAAAEAAUABgAAAAAAAAAEAAQABgAAAAAAAAAEAAMABgAAAAAAAAAEAAIABgAAAAAAAAAEAAEABAAAAAAAAAAFAAEABAAAAAAAAAAFAAIABwAAAAAAAAAFAAMABgAAAAAAAAAFAAQABwAAAAAAAAAFAAUABgAAAAAAAAAGAAUABQAAAAAAAAAGAAQABQAAAAAAAAAGAAMABQAAAAAAAAAGAAIABQAAAAAAAAAGAAEAAAAAAAAAAAAHAAEAAAAAAAAAAAAHAAIAAAAAAAAAAAAHAAMAAAAAAAAAAAAHAAQAAAAAAAAAAAAHAAUAAAAAAAAAAAAHAAYAAAAAAAAAAAAIAAYAAAAAAAAAAAAIAAUAAAAAAAAAAAAIAAMAAAAAAAAAAAAIAAIAAAAAAAAAAAAIAAEAAAAAAAAAAAAJAAEAAAAAAAAAAAAJAAIAAAAAAAAAAAAJAAMAAAAAAAAAAAAJAAQAAAAAAAAAAAAJAAUAAAAAAAAAAAAJAAYAAAAAAAAAAAAKAAYAAAAAAAAAAAAKAAUAAAAAAAAAAAAKAAQAAAAAAAAAAAAKAAMAAAAAAAAAAAAKAAIAAAAAAAAAAAAKAAEAAAAAAAAAAAALAAEAAAAAAAAAAAALAAIAAAAAAAAAAAALAAMAAAAAAAAAAAALAAQAAAAAAAAAAAALAAUAAAAAAAAAAAALAAYAAAAAAAAAAAAIAAQAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_iclgn")
+
+[node name="Decoration" type="Node2D" parent="."]
+
+[node name="GrassDeco" parent="Decoration" instance=ExtResource("27_nu03s")]
+position = Vector2(478, 448)
+
+[node name="GrassDeco2" parent="Decoration" instance=ExtResource("27_nu03s")]
+position = Vector2(758, 457)
+
+[node name="GrassDeco3" parent="Decoration" instance=ExtResource("27_nu03s")]
+position = Vector2(48, 481)
+
+[node name="GrassDeco4" parent="Decoration" instance=ExtResource("27_nu03s")]
+position = Vector2(430, 71)
+
+[node name="GrassDeco5" parent="Decoration" instance=ExtResource("27_nu03s")]
+position = Vector2(684, 43)
+
+[node name="GrassDeco6" parent="Decoration" instance=ExtResource("27_nu03s")]
+position = Vector2(779, 242)
+
+[node name="GrassDeco7" parent="Decoration" instance=ExtResource("27_nu03s")]
+position = Vector2(451, 342)
+
+[node name="GrassDeco8" parent="Decoration" instance=ExtResource("27_nu03s")]
+position = Vector2(476, 150)
+
+[node name="GrassDeco9" parent="Decoration" instance=ExtResource("27_nu03s")]
+position = Vector2(345, 480)
+
+[node name="GrassDeco10" parent="Decoration" instance=ExtResource("27_nu03s")]
+position = Vector2(193, 472)
+
+[node name="GrassDeco11" parent="Decoration" instance=ExtResource("27_nu03s")]
+position = Vector2(46, 107)
+
+[node name="GrassDeco12" parent="Decoration" instance=ExtResource("27_nu03s")]
+position = Vector2(93, 47)
+
+[node name="GrassDeco13" parent="Decoration" instance=ExtResource("27_nu03s")]
+position = Vector2(116, 453)
+
+[node name="GrassDeco14" parent="Decoration" instance=ExtResource("27_nu03s")]
+position = Vector2(279, 462)
+
+[node name="GrassDeco15" parent="Decoration" instance=ExtResource("27_nu03s")]
+position = Vector2(583, 485)
+
+[node name="GrassDeco16" parent="Decoration" instance=ExtResource("27_nu03s")]
+position = Vector2(660, 431)
 
 [node name="Plots" type="Node2D" parent="."]
 
@@ -183,10 +257,15 @@ crop = ExtResource("19_nuy2r")
 [node name="GameUI" type="CanvasLayer" parent="."]
 
 [node name="InventoryUI" type="PanelContainer" parent="GameUI"]
-offset_left = 445.0
-offset_top = 153.0
-offset_right = 580.0
-offset_bottom = 370.0
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -127.0
+offset_top = 14.0
+offset_right = -30.0
+offset_bottom = 202.0
+grow_horizontal = 0
+pivot_offset = Vector2(50, 95)
 script = ExtResource("20_46mt3")
 
 [node name="MarginContainer" type="MarginContainer" parent="GameUI/InventoryUI"]
@@ -199,11 +278,23 @@ theme_override_constants/margin_bottom = 5
 [node name="VBoxContainer" type="VBoxContainer" parent="GameUI/InventoryUI/MarginContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="GameUI/InventoryUI/MarginContainer/VBoxContainer"]
+[node name="Title" type="Label" parent="GameUI/InventoryUI/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Inventory"
 horizontal_alignment = 1
 vertical_alignment = 2
+
+[node name="InventoryParticle" type="GPUParticles2D" parent="GameUI/InventoryUI/MarginContainer/VBoxContainer/Title"]
+position = Vector2(43, 33)
+emitting = false
+amount = 20
+texture = ExtResource("23_fnfwq")
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+randomness = 0.8
+trail_lifetime = 0.1
+process_material = SubResource("ParticleProcessMaterial_nu03s")
 
 [node name="HSeparator" type="HSeparator" parent="GameUI/InventoryUI/MarginContainer/VBoxContainer"]
 layout_mode = 2

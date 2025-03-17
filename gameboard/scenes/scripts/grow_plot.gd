@@ -63,10 +63,17 @@ func _handle_tool_usage():
 func harvest_crop():
 	if not ready_to_harvest or not planted_crop:
 		return  # Stop if there's nothing to harvest
-		
-	Inventory.add_item(planted_crop.crop_name, planted_crop.harvest_yield)
+	
 	%HarvestSound.pitch_scale = randf_range(0.8, 1.0)
 	%HarvestSound.play()
+
+	var harvest_name := planted_crop.crop_name
+	var harvest_amt := planted_crop.harvest_yield
+	var crop_anim = AnimateCrop.new(self.global_position, Inventory.ui_location, planted_crop)
+	get_tree().current_scene.add_child(crop_anim)
+	
+	crop_anim.anim_complete.connect(func():
+		Inventory.add_item(harvest_name, harvest_amt))
 
 	leaf_particles.emitting = true
 	if not ready_to_harvest:
@@ -89,6 +96,7 @@ func harvest_crop():
 
 func _plant_crop(crop : Crop):
 	if ready_to_plant and is_tilled and crop:
+		till_particles.emitting = true
 		ready_to_plant = false
 		crop_planted = true
 		planted_crop = crop
@@ -126,6 +134,10 @@ func _handle_plant_growth(delta):
 	if not ready_to_harvest and harvest_particles.emitting:
 		harvest_particles.emitting = false
 		harvest_particles.hide()
+		
+func animate_crop_ui(start_position: Vector2):
+	var moving_icon = AnimateCrop.new(start_position, Inventory.ui_location, planted_crop)
+	get_parent().add_child(moving_icon)
 		
 #region ToolUsage
 func till_ground():

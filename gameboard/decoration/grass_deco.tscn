@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://d38jq6ycjg8fp"]
+
+[ext_resource type="Shader" uid="uid://dtavsjmdmlx7g" path="res://gameboard/scenes/shaders/WindSway.gdshader" id="1_5oy6l"]
+[ext_resource type="Texture2D" uid="uid://b6vyavt07fmpf" path="res://crops/art/grass2.png" id="1_ddbby"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2daku"]
+shader = ExtResource("1_5oy6l")
+shader_parameter/sway_strength = 5.0
+shader_parameter/sway_speed = 3.475
+shader_parameter/sway_frequency = 5.0
+shader_parameter/height_falloff = 0.865
+
+[node name="GrassDeco" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_2daku")
+position = Vector2(2, -20)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_ddbby")

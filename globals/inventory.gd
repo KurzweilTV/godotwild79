@@ -1,10 +1,14 @@
 extends Node
 
+signal item_added
+
+@export var ui_location: Vector2
 @export var contents: Dictionary = {}
 
 func add_item(item: String, count: int = 1):
 	contents[item] = contents.get(item, 0) + count
 	MessageBus.update_ui.emit()
+	Inventory.item_added.emit()
 
 func remove_item(item: String, count: int = 1):
 	if contents.has(item):
