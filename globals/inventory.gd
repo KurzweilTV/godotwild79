@@ -1,4 +1,4 @@
-extends Node
+extends Node # i hate inventories
 
 @warning_ignore("unused_signal")
 signal item_added

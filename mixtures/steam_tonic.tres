@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Mixture" load_steps=4 format=3 uid="uid://855p7qphhbd1"]
+
+[ext_resource type="Resource" uid="uid://cu4xalpgv2p7h" path="res://crops/resources/emberberry.tres" id="1_l81tg"]
+[ext_resource type="Script" uid="uid://dcolyfj2k0sko" path="res://mixtures/scripts/mixtures.gd" id="1_u535j"]
+[ext_resource type="Resource" uid="uid://7k0t487li10y" path="res://crops/resources/dewblossom.tres" id="2_hb8ff"]
+
+[resource]
+script = ExtResource("1_u535j")
+mixture_name = "SteamTonic"
+ingredient_1 = ExtResource("1_l81tg")
+inveredient_1_amount = 8
+ingredient_2 = ExtResource("2_hb8ff")
+inveredient_2_amount = 6
+metadata/_custom_type_script = "uid://dcolyfj2k0sko"

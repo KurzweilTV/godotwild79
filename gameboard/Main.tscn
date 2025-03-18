@@ -453,6 +453,7 @@ text = "5"
 [node name="Sounds" type="Node" parent="."]
 
 [node name="Music" type="AudioStreamPlayer" parent="Sounds"]
+unique_name_in_owner = true
 stream = ExtResource("26_nu03s")
 volume_db = -5.0
 bus = &"Music"

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Mixture" load_steps=3 format=3 uid="uid://c3c3gvwrnwym5"]
+
+[ext_resource type="Script" uid="uid://dcolyfj2k0sko" path="res://mixtures/scripts/mixtures.gd" id="1_q11m2"]
+[ext_resource type="Resource" uid="uid://7k0t487li10y" path="res://crops/resources/dewblossom.tres" id="1_ra3o0"]
+
+[resource]
+script = ExtResource("1_q11m2")
+mixture_name = ""
+ingredient_1 = ExtResource("1_ra3o0")
+inveredient_1_amount = 6
+ingredient_2 = ExtResource("1_ra3o0")
+inveredient_2_amount = 6
+metadata/_custom_type_script = "uid://dcolyfj2k0sko"

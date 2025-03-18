@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var music: AudioStreamPlayer = $Sounds/Music
+@onready var music: AudioStreamPlayer = %Music
 
 
 func _ready() -> void:
