@@ -306,13 +306,14 @@ layout_mode = 2
 [node name="HBoxContainer" type="HBoxContainer" parent="GameUI/InventoryUI/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="GlowrootBox" type="VBoxContainer" parent="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+tooltip_text = "Glowroot"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer/GlowrootBox"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="GreenIcon" type="TextureRect" parent="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="GreenIcon" type="TextureRect" parent="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer/GlowrootBox/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -320,7 +321,7 @@ texture = ExtResource("20_cj87h")
 expand_mode = 2
 stretch_mode = 4
 
-[node name="GreenCount" type="Label" parent="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="GreenCount" type="Label" parent="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer/GlowrootBox/HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
@@ -330,37 +331,38 @@ label_settings = ExtResource("21_t4dus")
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="Buttons" type="HBoxContainer" parent="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="Buttons" type="HBoxContainer" parent="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer/GlowrootBox"]
 layout_mode = 2
 
-[node name="TextureButton" type="TextureButton" parent="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Buttons"]
+[node name="TextureButton" type="TextureButton" parent="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer/GlowrootBox/Buttons"]
 layout_mode = 2
 size_flags_vertical = 4
 texture_normal = ExtResource("26_jgy31")
 
-[node name="Label" type="Label" parent="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Buttons"]
+[node name="Label" type="Label" parent="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer/GlowrootBox/Buttons"]
 layout_mode = 2
 text = "1"
 
-[node name="TextureButton2" type="TextureButton" parent="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Buttons"]
+[node name="TextureButton2" type="TextureButton" parent="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer/GlowrootBox/Buttons"]
 layout_mode = 2
 size_flags_vertical = 4
 texture_normal = ExtResource("26_jgy31")
 
-[node name="Label2" type="Label" parent="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Buttons"]
+[node name="Label2" type="Label" parent="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer/GlowrootBox/Buttons"]
 layout_mode = 2
 text = "5"
 
 [node name="VSeparator" type="VSeparator" parent="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="EmberberryBox" type="VBoxContainer" parent="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+tooltip_text = "Emberberry"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer/EmberberryBox"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
-layout_mode = 2
-
-[node name="RedIcon" type="TextureRect" parent="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer"]
+[node name="RedIcon" type="TextureRect" parent="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer/EmberberryBox/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -368,7 +370,7 @@ texture = ExtResource("21_7624x")
 expand_mode = 2
 stretch_mode = 4
 
-[node name="RedCount" type="Label" parent="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer"]
+[node name="RedCount" type="Label" parent="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer/EmberberryBox/HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
@@ -378,37 +380,38 @@ label_settings = ExtResource("21_t4dus")
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="Buttons" type="HBoxContainer" parent="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="Buttons" type="HBoxContainer" parent="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer/EmberberryBox"]
 layout_mode = 2
 
-[node name="TextureButton" type="TextureButton" parent="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Buttons"]
+[node name="TextureButton" type="TextureButton" parent="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer/EmberberryBox/Buttons"]
 layout_mode = 2
 size_flags_vertical = 4
 texture_normal = ExtResource("26_jgy31")
 
-[node name="Label" type="Label" parent="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Buttons"]
+[node name="Label" type="Label" parent="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer/EmberberryBox/Buttons"]
 layout_mode = 2
 text = "1"
 
-[node name="TextureButton2" type="TextureButton" parent="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Buttons"]
+[node name="TextureButton2" type="TextureButton" parent="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer/EmberberryBox/Buttons"]
 layout_mode = 2
 size_flags_vertical = 4
 texture_normal = ExtResource("26_jgy31")
 
-[node name="Label2" type="Label" parent="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Buttons"]
+[node name="Label2" type="Label" parent="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer/EmberberryBox/Buttons"]
 layout_mode = 2
 text = "5"
 
 [node name="VSeparator2" type="VSeparator" parent="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer3" type="VBoxContainer" parent="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="DewblossomBox" type="VBoxContainer" parent="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+tooltip_text = "Dewblossom"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer/DewblossomBox"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3"]
-layout_mode = 2
-
-[node name="BlueIcon" type="TextureRect" parent="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/HBoxContainer"]
+[node name="BlueIcon" type="TextureRect" parent="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer/DewblossomBox/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -416,7 +419,7 @@ texture = ExtResource("22_46mt3")
 expand_mode = 2
 stretch_mode = 4
 
-[node name="BlueCount" type="Label" parent="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/HBoxContainer"]
+[node name="BlueCount" type="Label" parent="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer/DewblossomBox/HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
@@ -426,24 +429,24 @@ label_settings = ExtResource("21_t4dus")
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="Buttons" type="HBoxContainer" parent="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3"]
+[node name="Buttons" type="HBoxContainer" parent="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer/DewblossomBox"]
 layout_mode = 2
 
-[node name="TextureButton" type="TextureButton" parent="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/Buttons"]
+[node name="TextureButton" type="TextureButton" parent="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer/DewblossomBox/Buttons"]
 layout_mode = 2
 size_flags_vertical = 4
 texture_normal = ExtResource("26_jgy31")
 
-[node name="Label" type="Label" parent="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/Buttons"]
+[node name="Label" type="Label" parent="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer/DewblossomBox/Buttons"]
 layout_mode = 2
 text = "1"
 
-[node name="TextureButton2" type="TextureButton" parent="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/Buttons"]
+[node name="TextureButton2" type="TextureButton" parent="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer/DewblossomBox/Buttons"]
 layout_mode = 2
 size_flags_vertical = 4
 texture_normal = ExtResource("26_jgy31")
 
-[node name="Label2" type="Label" parent="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/Buttons"]
+[node name="Label2" type="Label" parent="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer/DewblossomBox/Buttons"]
 layout_mode = 2
 text = "5"
 
@@ -454,9 +457,9 @@ stream = ExtResource("26_nu03s")
 volume_db = -5.0
 bus = &"Music"
 
-[connection signal="pressed" from="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Buttons/TextureButton" to="Cauldron" method="_on_add_glowroot_one_pressed"]
-[connection signal="pressed" from="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Buttons/TextureButton2" to="Cauldron" method="_on_add_glowroot_five_pressed"]
-[connection signal="pressed" from="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Buttons/TextureButton" to="Cauldron" method="_on_add_emberberry_one_pressed"]
-[connection signal="pressed" from="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Buttons/TextureButton2" to="Cauldron" method="_on_add_emberberry_five_pressed"]
-[connection signal="pressed" from="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/Buttons/TextureButton" to="Cauldron" method="_on_add_dewblossom_one_pressed"]
-[connection signal="pressed" from="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/Buttons/TextureButton2" to="Cauldron" method="_on_add_dewblossom_five_pressed"]
+[connection signal="pressed" from="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer/GlowrootBox/Buttons/TextureButton" to="Cauldron" method="_on_add_glowroot_one_pressed"]
+[connection signal="pressed" from="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer/GlowrootBox/Buttons/TextureButton2" to="Cauldron" method="_on_add_glowroot_five_pressed"]
+[connection signal="pressed" from="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer/EmberberryBox/Buttons/TextureButton" to="Cauldron" method="_on_add_emberberry_one_pressed"]
+[connection signal="pressed" from="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer/EmberberryBox/Buttons/TextureButton2" to="Cauldron" method="_on_add_emberberry_five_pressed"]
+[connection signal="pressed" from="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer/DewblossomBox/Buttons/TextureButton" to="Cauldron" method="_on_add_dewblossom_one_pressed"]
+[connection signal="pressed" from="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer/DewblossomBox/Buttons/TextureButton2" to="Cauldron" method="_on_add_dewblossom_five_pressed"]

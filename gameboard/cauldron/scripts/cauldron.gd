@@ -52,8 +52,8 @@ func add_ingredient(slot: Dictionary, ingredient: Crop, amount: int) -> void:
 		update_progress_ui()
 		
 	else:
-		GlobalCursor.float_text("Not enough!", Color.RED)
-		print("Not enough ", ingredient_name, " in inventory")
+		GlobalCursor.float_text("Not Enough\n%s" % ingredient_name, Color.RED)
+		#print("Not enough ", ingredient_name, " in inventory")
 
 func update_progress_ui():
 	ingredient_1.value = cook_slot_1.get("count", 0)

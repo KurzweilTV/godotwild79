@@ -20,7 +20,6 @@ func animate_ui() -> void:
 	await get_tree().create_timer(new_particles.lifetime).timeout
 	new_particles.queue_free()
 
-	
 func _update_ui() -> void: 
 	green_count.text = str(Inventory.contents.get("Glowroot", 0))
 	red_count.text = str(Inventory.contents.get("Emberberry", 0))

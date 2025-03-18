@@ -14,12 +14,24 @@ corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_51fau"]
 bg_color = Color(0.152941, 0.682353, 0.376471, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nofs7"]
 bg_color = Color(0.835294, 0.376471, 0.411765, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jcgkj"]
 bg_color = Color(0.0862745, 0.658824, 0.913725, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [node name="Cauldron" type="Node2D"]
 script = ExtResource("1_f7bjt")
@@ -50,12 +62,15 @@ theme_override_constants/margin_bottom = 10
 
 [node name="Barbox" type="HBoxContainer" parent="Mixbars/MarginContainer"]
 layout_mode = 2
+tooltip_text = "Ingredients in the Cauldron"
 
 [node name="Ingredient1" type="ProgressBar" parent="Mixbars/MarginContainer/Barbox"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
+tooltip_text = "Glowroot
+"
 theme_override_styles/fill = SubResource("StyleBoxFlat_51fau")
 max_value = 10.0
 step = 1.0
@@ -67,6 +82,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
+tooltip_text = "Emberberry"
 theme_override_styles/fill = SubResource("StyleBoxFlat_nofs7")
 max_value = 10.0
 step = 1.0
@@ -78,6 +94,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
+tooltip_text = "Dewblossom"
 theme_override_styles/fill = SubResource("StyleBoxFlat_jcgkj")
 max_value = 10.0
 step = 1.0
