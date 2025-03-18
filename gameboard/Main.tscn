@@ -257,7 +257,7 @@ is_seed = true
 crop = ExtResource("19_nuy2r")
 
 [node name="Cauldron" parent="." instance=ExtResource("30_keahd")]
-position = Vector2(572, 252)
+position = Vector2(549, 251)
 
 [node name="GameUI" type="CanvasLayer" parent="."]
 
