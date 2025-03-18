@@ -1,5 +1,6 @@
 extends Node
 
+@warning_ignore("unused_signal")
 signal item_added
 
 @export var ui_location: Vector2

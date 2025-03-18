@@ -19,8 +19,8 @@ func setup(text_value: String, color: Color):
 	self.modulate = color
 
 	var tween = get_tree().create_tween()
-	var start_pos = position
-	var end_pos = start_pos - Vector2(0, 20)  # Moves upward
+	var start_pos = position + Vector2(0, 40)
+	var end_pos = start_pos - Vector2(0, -20)  # Moves upward
 
 	# Animate position and opacity
 	tween.tween_property(self, \"position\", end_pos, lifetime)
@@ -31,7 +31,7 @@ func setup(text_value: String, color: Color):
 "
 
 [node name="FloatingText" type="Label"]
-z_index = 10
+z_index = 100
 z_as_relative = false
 offset_left = -32.0
 offset_top = -13.0

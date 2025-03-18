@@ -9,4 +9,3 @@ func _ready() -> void:
 func play_bgm() -> void:
 	if Settings.music_enabled:
 		music.play()
-	

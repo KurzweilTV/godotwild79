@@ -1,7 +1,8 @@
 extends PanelContainer
 
+@export var cauldron : Cauldron
 
-@onready var inventory_particle: GPUParticles2D = $MarginContainer/VBoxContainer/Title/InventoryParticle
+@onready var inventory_particle: GPUParticles2D = %InventoryParticle
 @onready var green_count: Label = %GreenCount
 @onready var red_count: Label = %RedCount
 @onready var blue_count: Label = %BlueCount
@@ -12,10 +13,10 @@ func _ready() -> void:
 	Inventory.item_added.connect(animate_ui)
 	
 func animate_ui() -> void:
-	var new_particles = inventory_particle.duplicate()  # Duplicate the existing particles
-	get_tree().current_scene.add_child(new_particles)  # Add to the scene
-	new_particles.global_position = inventory_particle.global_position  # Set the same position
-	new_particles.emitting = true  # Start emitting
+	var new_particles = inventory_particle.duplicate()
+	get_tree().current_scene.add_child(new_particles)  
+	new_particles.global_position = inventory_particle.global_position 
+	new_particles.emitting = true
 	await get_tree().create_timer(new_particles.lifetime).timeout
 	new_particles.queue_free()
 

@@ -6,3 +6,4 @@ extends Resource
 @export var water_needed: float = 50.0  # Minimum water required to grow. Might remove?
 @export var sprite: Texture2D  # Crop sprite
 @export var harvest_yield: int = 1  # How much you get when harvested
+@export var crop_color: Color # for cauldron color mixing

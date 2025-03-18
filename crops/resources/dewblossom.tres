@@ -10,4 +10,5 @@ growth_time = 30.0
 water_needed = 10.0
 sprite = ExtResource("2_w4nc7")
 harvest_yield = 1
+crop_color = Color(0.0862745, 0.658824, 0.913725, 1)
 metadata/_custom_type_script = "uid://ddw5m4nnn0bf6"

@@ -1,0 +1,82 @@
+[gd_scene load_steps=8 format=3 uid="uid://cbmdebv26mlj"]
+
+[ext_resource type="Texture2D" uid="uid://q1kkf68480yx" path="res://gameboard/cauldron/art/prototype_cauldron.png" id="1_0tuof"]
+[ext_resource type="Script" uid="uid://dqmvkcu4bxjfe" path="res://gameboard/cauldron/scripts/cauldron.gd" id="1_f7bjt"]
+[ext_resource type="Texture2D" uid="uid://dmd6ijv1sch0n" path="res://gameboard/cauldron/art/prototype_cauldron_liquid.png" id="1_rjscg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f7bjt"]
+bg_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_51fau"]
+bg_color = Color(0.152941, 0.682353, 0.376471, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nofs7"]
+bg_color = Color(0.835294, 0.376471, 0.411765, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jcgkj"]
+bg_color = Color(0.0862745, 0.658824, 0.913725, 1)
+
+[node name="Cauldron" type="Node2D"]
+script = ExtResource("1_f7bjt")
+
+[node name="Liquid" type="Sprite2D" parent="."]
+position = Vector2(1, 0)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("1_rjscg")
+
+[node name="Body" type="Sprite2D" parent="."]
+position = Vector2(0, 0.5)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("1_0tuof")
+
+[node name="Mixbars" type="PanelContainer" parent="."]
+offset_left = 146.0
+offset_top = -115.0
+offset_right = 323.0
+offset_bottom = 128.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_f7bjt")
+
+[node name="MarginContainer" type="MarginContainer" parent="Mixbars"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Barbox" type="HBoxContainer" parent="Mixbars/MarginContainer"]
+layout_mode = 2
+
+[node name="Ingredient1" type="ProgressBar" parent="Mixbars/MarginContainer/Barbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_styles/fill = SubResource("StyleBoxFlat_51fau")
+max_value = 10.0
+step = 1.0
+value = 7.0
+fill_mode = 3
+
+[node name="Ingredient2" type="ProgressBar" parent="Mixbars/MarginContainer/Barbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_styles/fill = SubResource("StyleBoxFlat_nofs7")
+max_value = 10.0
+step = 1.0
+value = 7.0
+fill_mode = 3
+
+[node name="Ingredient3" type="ProgressBar" parent="Mixbars/MarginContainer/Barbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_styles/fill = SubResource("StyleBoxFlat_jcgkj")
+max_value = 10.0
+step = 1.0
+value = 7.0
+fill_mode = 3
