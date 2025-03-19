@@ -1,7 +1,7 @@
 class_name Cauldron
 extends Node2D
 
-@export var current_mixture: Mixture
+@export var current_mixture: Mixture = preload("res://mixtures/blazebloom.tres")
 @onready var liquid: Sprite2D = $Liquid
 @onready var ingredient_1: ProgressBar = %Ingredient1
 @onready var ingredient_2: ProgressBar = %Ingredient2
@@ -32,12 +32,14 @@ func update_liquid_color():
 func add_ingredient(ingredient: Crop, amount: int) -> void:
 	var slot_key = ""
 	
-	if "ingredient_1" not in cook_slots:
+	if "ingredient_1" in cook_slots and cook_slots["ingredient_1"].get("crop") == ingredient and cook_slots["ingredient_1"].get("count", 0) < cook_slots["ingredient_1"].get("required", 9999):
+		slot_key = "ingredient_1"
+	elif "ingredient_2" in cook_slots and cook_slots["ingredient_2"].get("crop") == ingredient and cook_slots["ingredient_2"].get("count", 0) < cook_slots["ingredient_2"].get("required", 9999):
+		slot_key = "ingredient_2"
+	elif "ingredient_1" not in cook_slots:
 		slot_key = "ingredient_1"
 	elif "ingredient_2" not in cook_slots:
 		slot_key = "ingredient_2"
-	elif ingredient in [cook_slots["ingredient_1"].get("crop"), cook_slots["ingredient_2"].get("crop")]:
-		slot_key = "ingredient_1" if cook_slots["ingredient_1"].get("crop") == ingredient else "ingredient_2"
 	else:
 		GlobalCursor.float_text("Cauldron is full", Color.RED)
 		return
@@ -46,7 +48,7 @@ func add_ingredient(ingredient: Crop, amount: int) -> void:
 		Inventory.remove_item(ingredient.crop_name, amount)
 		
 		if slot_key not in cook_slots:
-			cook_slots[slot_key] = {"crop": ingredient, "count": amount}
+			cook_slots[slot_key] = {"crop": ingredient, "count": amount, "required": current_mixture.inveredient_1_amount if slot_key == "ingredient_1" else current_mixture.inveredient_2_amount}
 		else:
 			cook_slots[slot_key]["count"] += amount
 		
