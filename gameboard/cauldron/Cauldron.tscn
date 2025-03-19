@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cbmdebv26mlj"]
+[gd_scene load_steps=8 format=3 uid="uid://cbmdebv26mlj"]
 
 [ext_resource type="Texture2D" uid="uid://q1kkf68480yx" path="res://gameboard/cauldron/art/prototype_cauldron.png" id="1_0tuof"]
 [ext_resource type="Script" uid="uid://dqmvkcu4bxjfe" path="res://gameboard/cauldron/scripts/cauldron.gd" id="1_f7bjt"]
 [ext_resource type="Texture2D" uid="uid://dmd6ijv1sch0n" path="res://gameboard/cauldron/art/prototype_cauldron_liquid.png" id="1_rjscg"]
+[ext_resource type="PackedScene" uid="uid://d4d4kudkat6a4" path="res://gameboard/cauldron/OrderScene.tscn" id="4_51fau"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f7bjt"]
 bg_color = Color(0.400698, 0.400698, 0.400698, 1)
@@ -109,3 +110,6 @@ max_value = 10.0
 step = 1.0
 fill_mode = 3
 show_percentage = false
+
+[node name="OrderScene" parent="." instance=ExtResource("4_51fau")]
+position = Vector2(-35, 106)

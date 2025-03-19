@@ -1,13 +1,15 @@
-[gd_resource type="Resource" script_class="Mixture" load_steps=3 format=3 uid="uid://lhd18hb20my0"]
+[gd_resource type="Resource" script_class="Mixture" load_steps=4 format=3 uid="uid://lhd18hb20my0"]
 
 [ext_resource type="Script" uid="uid://dcolyfj2k0sko" path="res://mixtures/scripts/mixtures.gd" id="1_lkvcf"]
 [ext_resource type="Resource" uid="uid://dlyk8fml2ohod" path="res://crops/resources/glowroot.tres" id="1_rbodb"]
+[ext_resource type="Texture2D" uid="uid://b5qqagcfl8dgd" path="res://mixtures/art/glowroot_distill.png" id="2_owylv"]
 
 [resource]
 script = ExtResource("1_lkvcf")
 mixture_name = "Concentrated Glowroot"
 ingredient_1 = ExtResource("1_rbodb")
-inveredient_1_amount = 6
+ingredient_1_amount = 6
 ingredient_2 = ExtResource("1_rbodb")
-inveredient_2_amount = 6
+ingredient_2_amount = 6
+mixture_icon = ExtResource("2_owylv")
 metadata/_custom_type_script = "uid://dcolyfj2k0sko"

@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://d4d4kudkat6a4"]
+
+[ext_resource type="Script" uid="uid://bmq80e6ln15b8" path="res://gameboard/cauldron/scripts/order_scene.gd" id="1_fi1xq"]
+
+[node name="OrderScene" type="Node2D"]
+script = ExtResource("1_fi1xq")
+
+[node name="OrderUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PanelContainer" type="PanelContainer" parent="OrderUI"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MarginContainer" type="MarginContainer" parent="OrderUI/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="OrderIcon" type="TextureRect" parent="OrderUI/PanelContainer/MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+expand_mode = 1

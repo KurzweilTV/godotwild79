@@ -7,6 +7,7 @@ extends Node2D
 @onready var ingredient_2: ProgressBar = %Ingredient2
 @onready var texture_1: TextureRect = %Texture1
 @onready var texture_2: TextureRect = %Texture2
+@onready var order_scene: Node2D = $OrderScene
 
 const DEWBLOSSOM = preload("res://crops/resources/dewblossom.tres")
 const EMBERBERRY = preload("res://crops/resources/emberberry.tres")
@@ -14,10 +15,17 @@ const GLOWROOT = preload("res://crops/resources/glowroot.tres")
 
 var cook_slots: Dictionary = {}
 
-func _process(delta: float) -> void:
+func _ready() -> void:
+	order_scene.connect("new_order", Callable(self, "set_order"))
+
+func _process(_delta: float) -> void: #HACK this is ugly and lazy as fuck
 	if current_mixture:
 		texture_1.texture = current_mixture.ingredient_1.sprite
 		texture_2.texture = current_mixture.ingredient_2.sprite
+
+func set_order(order: Mixture):
+	print("New order: ", order.mixture_name)
+	current_mixture = order
 
 func update_liquid_color():
 	var total_quantity = 0
@@ -87,8 +95,6 @@ func reset_cauldron():
 	ingredient_2.value = 0
 	texture_1.texture = null
 	texture_2.texture = null
-
-		
 
 func _on_add_glowroot_one_pressed() -> void:
 	add_ingredient(GLOWROOT, 1)

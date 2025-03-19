@@ -1,13 +1,15 @@
-[gd_resource type="Resource" script_class="Mixture" load_steps=3 format=3 uid="uid://c3c3gvwrnwym5"]
+[gd_resource type="Resource" script_class="Mixture" load_steps=4 format=3 uid="uid://c3c3gvwrnwym5"]
 
 [ext_resource type="Script" uid="uid://dcolyfj2k0sko" path="res://mixtures/scripts/mixtures.gd" id="1_q11m2"]
 [ext_resource type="Resource" uid="uid://7k0t487li10y" path="res://crops/resources/dewblossom.tres" id="1_ra3o0"]
+[ext_resource type="Texture2D" uid="uid://dsfk1yk7amr1y" path="res://mixtures/art/dewblossom_distill.png" id="2_jsgtc"]
 
 [resource]
 script = ExtResource("1_q11m2")
-mixture_name = ""
+mixture_name = "Concentrated Dewblossom"
 ingredient_1 = ExtResource("1_ra3o0")
-inveredient_1_amount = 6
+ingredient_1_amount = 6
 ingredient_2 = ExtResource("1_ra3o0")
-inveredient_2_amount = 6
+ingredient_2_amount = 6
+mixture_icon = ExtResource("2_jsgtc")
 metadata/_custom_type_script = "uid://dcolyfj2k0sko"
