@@ -32,26 +32,31 @@ func update_liquid_color():
 func add_ingredient(ingredient: Crop, amount: int) -> void:
 	var slot_key = ""
 	
-	if "ingredient_1" in cook_slots and cook_slots["ingredient_1"].get("crop") == ingredient and cook_slots["ingredient_1"].get("count", 0) < cook_slots["ingredient_1"].get("required", 9999):
-		slot_key = "ingredient_1"
-	elif "ingredient_2" in cook_slots and cook_slots["ingredient_2"].get("crop") == ingredient and cook_slots["ingredient_2"].get("count", 0) < cook_slots["ingredient_2"].get("required", 9999):
-		slot_key = "ingredient_2"
-	elif "ingredient_1" not in cook_slots:
-		slot_key = "ingredient_1"
-	elif "ingredient_2" not in cook_slots:
-		slot_key = "ingredient_2"
-	else:
-		GlobalCursor.float_text("Cauldron is full", Color.RED)
+	if current_mixture:
+		if ingredient == current_mixture.ingredient_1:
+			slot_key = "ingredient_1"
+		elif ingredient == current_mixture.ingredient_2:
+			slot_key = "ingredient_2"
+		else:
+			GlobalCursor.float_text("Invalid ingredient for this mixture", Color.RED)
+			return
+	
+	if slot_key in cook_slots and cook_slots[slot_key].get("count", 0) >= cook_slots[slot_key].get("required", 9999):
+		GlobalCursor.float_text("Ingredient slot is full", Color.RED)
 		return
-
+	
 	if Inventory.has_item(ingredient.crop_name, amount):
 		Inventory.remove_item(ingredient.crop_name, amount)
-		
+
 		if slot_key not in cook_slots:
-			cook_slots[slot_key] = {"crop": ingredient, "count": amount, "required": current_mixture.inveredient_1_amount if slot_key == "ingredient_1" else current_mixture.inveredient_2_amount}
+			cook_slots[slot_key] = {
+				"crop": ingredient,
+				"count": amount,
+				"required": current_mixture.ingredient_1_amount if slot_key == "ingredient_1" else current_mixture.ingredient_2_amount
+			}
 		else:
 			cook_slots[slot_key]["count"] += amount
-		
+
 		update_liquid_color()
 		update_progress_ui()
 	else:
@@ -61,9 +66,20 @@ func update_progress_ui():
 	if "ingredient_1" in cook_slots:
 		ingredient_1.value = cook_slots["ingredient_1"].get("count", 0)
 		ingredient_1.max_value = cook_slots["ingredient_1"].get("required", 0)
+		ingredient_1.add_theme_color_override("fill_color", cook_slots["ingredient_1"]["crop"].crop_color)
+	
 	if "ingredient_2" in cook_slots:
 		ingredient_2.value = cook_slots["ingredient_2"].get("count", 0)
 		ingredient_2.max_value = cook_slots["ingredient_2"].get("required", 0)
+		ingredient_2.add_theme_color_override("fill_color", cook_slots["ingredient_2"]["crop"].crop_color)
+
+func reset_cauldron():
+	cook_slots.clear()
+	liquid.modulate = Color(1, 1, 1, 1)  # Reset color to default
+	ingredient_1.value = 0
+	ingredient_2.value = 0
+
+		
 
 func _on_add_glowroot_one_pressed() -> void:
 	add_ingredient(GLOWROOT, 1)

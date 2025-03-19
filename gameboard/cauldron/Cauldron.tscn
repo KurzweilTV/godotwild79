@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cbmdebv26mlj"]
+[gd_scene load_steps=7 format=3 uid="uid://cbmdebv26mlj"]
 
 [ext_resource type="Texture2D" uid="uid://q1kkf68480yx" path="res://gameboard/cauldron/art/prototype_cauldron.png" id="1_0tuof"]
 [ext_resource type="Script" uid="uid://dqmvkcu4bxjfe" path="res://gameboard/cauldron/scripts/cauldron.gd" id="1_f7bjt"]
@@ -21,13 +21,6 @@ corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nofs7"]
 bg_color = Color(0.835294, 0.376471, 0.411765, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jcgkj"]
-bg_color = Color(0.0862745, 0.658824, 0.913725, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
@@ -84,18 +77,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 1
 tooltip_text = "Emberberry"
 theme_override_styles/fill = SubResource("StyleBoxFlat_nofs7")
-max_value = 10.0
-step = 1.0
-fill_mode = 3
-show_percentage = false
-
-[node name="Ingredient3" type="ProgressBar" parent="Mixbars/MarginContainer/Barbox"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
-tooltip_text = "Dewblossom"
-theme_override_styles/fill = SubResource("StyleBoxFlat_jcgkj")
 max_value = 10.0
 step = 1.0
 fill_mode = 3
