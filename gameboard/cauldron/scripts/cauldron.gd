@@ -5,12 +5,19 @@ extends Node2D
 @onready var liquid: Sprite2D = $Liquid
 @onready var ingredient_1: ProgressBar = %Ingredient1
 @onready var ingredient_2: ProgressBar = %Ingredient2
+@onready var texture_1: TextureRect = %Texture1
+@onready var texture_2: TextureRect = %Texture2
 
 const DEWBLOSSOM = preload("res://crops/resources/dewblossom.tres")
 const EMBERBERRY = preload("res://crops/resources/emberberry.tres")
 const GLOWROOT = preload("res://crops/resources/glowroot.tres")
 
 var cook_slots: Dictionary = {}
+
+func _process(delta: float) -> void:
+	if current_mixture:
+		texture_1.texture = current_mixture.ingredient_1.sprite
+		texture_2.texture = current_mixture.ingredient_2.sprite
 
 func update_liquid_color():
 	var total_quantity = 0
@@ -38,7 +45,7 @@ func add_ingredient(ingredient: Crop, amount: int) -> void:
 		elif ingredient == current_mixture.ingredient_2:
 			slot_key = "ingredient_2"
 		else:
-			GlobalCursor.float_text("Invalid ingredient for this mixture", Color.RED)
+			GlobalCursor.float_text("Invalid\ningredient", Color.RED)
 			return
 	
 	if slot_key in cook_slots and cook_slots[slot_key].get("count", 0) >= cook_slots[slot_key].get("required", 9999):
@@ -78,6 +85,8 @@ func reset_cauldron():
 	liquid.modulate = Color(1, 1, 1, 1)  # Reset color to default
 	ingredient_1.value = 0
 	ingredient_2.value = 0
+	texture_1.texture = null
+	texture_2.texture = null
 
 		
 
