@@ -11,8 +11,8 @@ const STEAM_TONIC = preload("res://mixtures/steam_tonic.tres")
 
 @onready var order_icon: TextureRect = %OrderIcon
 
-@export var current_order : Mixture
-@export var next_order : Mixture
+@export var current_order : Mixture = DISTILLED_GLOWROOT
+@export var next_order : Mixture = BLAZEBLOOM
 
 var mixture_list : Array[Mixture] = [
 	GLOWDEW, 
@@ -32,8 +32,13 @@ func _ready() -> void:
 
 func add_order(order: Mixture):
 	current_order = order
-	update_order_icon()
 	new_order.emit(current_order)
+	update_order_icon()
 
 func update_order_icon():
 	order_icon.texture = current_order.mixture_icon
+
+func cycle_in_next_order():
+	current_order = null
+	add_order(next_order)
+	next_order = mixture_list.pick_random()

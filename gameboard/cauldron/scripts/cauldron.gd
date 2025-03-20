@@ -141,3 +141,8 @@ func _on_add_dewblossom_one_pressed() -> void:
 
 func _on_add_dewblossom_five_pressed() -> void:
 	add_ingredient(DEWBLOSSOM, 5)
+
+func _on_mix_button_pressed() -> void:
+	print("Mixing %s" % current_mixture.mixture_name)
+	reset_cauldron()
+	order_scene.cycle_in_next_order()

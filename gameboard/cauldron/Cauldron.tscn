@@ -113,3 +113,12 @@ show_percentage = false
 
 [node name="OrderScene" parent="." instance=ExtResource("4_51fau")]
 position = Vector2(-35, 106)
+
+[node name="MixButton" type="Button" parent="."]
+offset_left = -29.0
+offset_top = 31.0
+offset_right = 29.0
+offset_bottom = 62.0
+text = "MIX"
+
+[connection signal="pressed" from="MixButton" to="." method="_on_mix_button_pressed"]
