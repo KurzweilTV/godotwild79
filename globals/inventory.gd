@@ -5,6 +5,15 @@ signal item_added
 
 @export var ui_location: Vector2
 @export var contents: Dictionary = {}
+@export var debug_inventory : bool = true
+
+func _ready() -> void:
+	if debug_inventory:
+		add_item("Glowroot", 20)
+		add_item("Emberberry", 20)
+		add_item("Dewblossom", 20)
+		await get_tree().create_timer(.2).timeout
+		MessageBus.update_ui.emit()
 
 func add_item(item: String, count: int = 1):
 	contents[item] = contents.get(item, 0) + count

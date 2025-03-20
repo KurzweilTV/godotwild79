@@ -143,6 +143,16 @@ func _on_add_dewblossom_five_pressed() -> void:
 	add_ingredient(DEWBLOSSOM, 5)
 
 func _on_mix_button_pressed() -> void:
-	print("Mixing %s" % current_mixture.mixture_name)
-	reset_cauldron()
-	order_scene.cycle_in_next_order()
+	if not current_mixture:
+		GlobalCursor.float_text("No recipe", Color.RED) # this shouldn't happen
+		return
+
+	var ing1_filled = "ingredient_1" in cook_slots and cook_slots["ingredient_1"].get("count", 0) >= cook_slots["ingredient_1"].get("required", 0)
+	var ing2_filled = "ingredient_2" in cook_slots and cook_slots["ingredient_2"].get("count", 0) >= cook_slots["ingredient_2"].get("required", 0)
+
+	if ing1_filled and ing2_filled:
+		print("Mixing %s" % current_mixture.mixture_name)
+		reset_cauldron()
+		order_scene.cycle_in_next_order()
+	else:
+		GlobalCursor.float_text("Ingredients\nmissing!", Color.RED)

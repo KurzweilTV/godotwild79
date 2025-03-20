@@ -20,7 +20,7 @@ func setup(text_value: String, color: Color):
 
 	var tween = get_tree().create_tween()
 	var start_pos = position + Vector2(0, 40)
-	var end_pos = start_pos - Vector2(0, -20)  # Moves upward
+	var end_pos = start_pos - Vector2(0, -10)  # Moves upward
 
 	# Animate position and opacity
 	tween.tween_property(self, \"position\", end_pos, lifetime)

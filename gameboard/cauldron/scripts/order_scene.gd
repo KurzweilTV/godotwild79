@@ -10,6 +10,7 @@ const GLOWDEW = preload("res://mixtures/glowdew.tres")
 const STEAM_TONIC = preload("res://mixtures/steam_tonic.tres")
 
 @onready var order_icon: TextureRect = %OrderIcon
+@onready var next_order_icon: TextureRect = $NextOrderUI/PanelContainer/MarginContainer/NextOrderIcon
 
 @export var current_order : Mixture = DISTILLED_GLOWROOT
 @export var next_order : Mixture = BLAZEBLOOM
@@ -27,8 +28,11 @@ var upcoming_orders : Array
 
 func _ready() -> void:
 	randomize()
-	await get_tree().create_timer(1).timeout
-	add_order(mixture_list.pick_random())
+	await get_tree().create_timer(.2).timeout
+	add_order(current_order)
+
+func _process(_delta: float) -> void:
+	update_order_icon()
 
 func add_order(order: Mixture):
 	current_order = order
@@ -37,6 +41,7 @@ func add_order(order: Mixture):
 
 func update_order_icon():
 	order_icon.texture = current_order.mixture_icon
+	next_order_icon.texture = next_order.mixture_icon
 
 func cycle_in_next_order():
 	current_order = null

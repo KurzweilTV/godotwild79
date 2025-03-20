@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://d4d4kudkat6a4"]
+[gd_scene load_steps=3 format=3 uid="uid://d4d4kudkat6a4"]
 
 [ext_resource type="Script" uid="uid://bmq80e6ln15b8" path="res://gameboard/cauldron/scripts/order_scene.gd" id="1_fi1xq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fi1xq"]
+font_size = 12
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
 
 [node name="OrderScene" type="Node2D"]
 script = ExtResource("1_fi1xq")
@@ -28,3 +33,46 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 expand_mode = 1
+
+[node name="NextOrderUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 85.0
+offset_right = 125.0
+offset_bottom = 40.0
+
+[node name="PanelContainer" type="PanelContainer" parent="NextOrderUI"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MarginContainer" type="MarginContainer" parent="NextOrderUI/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="NextOrderIcon" type="TextureRect" parent="NextOrderUI/PanelContainer/MarginContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+expand_mode = 1
+
+[node name="Label" type="Label" parent="."]
+offset_left = -80.0
+offset_top = 1.0
+offset_right = -3.0
+offset_bottom = 73.0
+text = "Current
+Order"
+label_settings = SubResource("LabelSettings_fi1xq")
+horizontal_alignment = 2
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 162.0
+offset_top = 1.0
+offset_right = 224.0
+offset_bottom = 73.0
+text = "Next
+Order"
+label_settings = SubResource("LabelSettings_fi1xq")
