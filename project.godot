@@ -26,10 +26,9 @@ Settings="*res://globals/settings.gd"
 
 [display]
 
-window/size/viewport_width=1600
-window/size/viewport_height=900
+window/size/viewport_width=800
+window/size/viewport_height=450
 window/stretch/mode="canvas_items"
-window/stretch/scale=2.0
 window/stretch/scale_mode="integer"
 mouse_cursor/custom_image="uid://d05rlc7f7b14n"
 mouse_cursor/custom_image_hotspot=Vector2(20, 10)

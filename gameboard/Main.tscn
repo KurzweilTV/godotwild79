@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=4 uid="uid://bjahju06fp1ei"]
+[gd_scene load_steps=44 format=4 uid="uid://bjahju06fp1ei"]
 
 [ext_resource type="Script" uid="uid://clfyqgi8cidrb" path="res://gameboard/main.gd" id="1_0titf"]
 [ext_resource type="Texture2D" uid="uid://bjhq4rlnydyqg" path="res://gameboard/art/tileGrass1.png" id="1_2rh0h"]
@@ -29,6 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://ckyxggn68vokn" path="res://ui/Buttons/AddButtonSmall.png" id="26_jgy31"]
 [ext_resource type="AudioStream" uid="uid://duaidpw3p8e67" path="res://audio/music/FarmersMarket.mp3" id="26_nu03s"]
 [ext_resource type="PackedScene" uid="uid://d38jq6ycjg8fp" path="res://gameboard/decoration/grass_deco.tscn" id="27_nu03s"]
+[ext_resource type="PackedScene" uid="uid://cypg6hg6knpka" path="res://gameboard/timer/countdown_timer.tscn" id="30_1ieex"]
 [ext_resource type="PackedScene" uid="uid://cbmdebv26mlj" path="res://gameboard/cauldron/Cauldron.tscn" id="30_keahd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jcyhx"]
@@ -262,14 +263,14 @@ position = Vector2(549, 251)
 [node name="GameUI" type="CanvasLayer" parent="."]
 
 [node name="InventoryUI" type="PanelContainer" parent="GameUI" node_paths=PackedStringArray("cauldron")]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -380.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 21.0
 offset_top = 11.0
-offset_right = -69.0
+offset_right = 332.0
 offset_bottom = 118.0
-grow_horizontal = 0
+grow_horizontal = 2
 script = ExtResource("20_46mt3")
 cauldron = NodePath("../../Cauldron")
 
@@ -449,6 +450,20 @@ texture_normal = ExtResource("26_jgy31")
 [node name="Label2" type="Label" parent="GameUI/InventoryUI/MarginContainer/VBoxContainer/HBoxContainer/DewblossomBox/Buttons"]
 layout_mode = 2
 text = "5"
+
+[node name="CountdownTimer" parent="GameUI" instance=ExtResource("30_1ieex")]
+texture_filter = 2
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 0
+grow_vertical = 0
 
 [node name="Sounds" type="Node" parent="."]
 
