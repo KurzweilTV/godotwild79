@@ -1,4 +1,4 @@
 extends Node
 
-var music_enabled := false
+var music_enabled := true
 var sound_enabled := true

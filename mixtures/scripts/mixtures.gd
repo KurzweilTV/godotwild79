@@ -7,3 +7,4 @@ extends Resource
 @export var ingredient_2 : Crop
 @export var ingredient_2_amount : int
 @export var mixture_icon : Texture2D
+@export var time_value : int
