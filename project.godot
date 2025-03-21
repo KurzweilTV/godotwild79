@@ -41,3 +41,7 @@ folder_colors={
 "res://gameboard/scenes/sounds/": "yellow",
 "res://globals/": "red"
 }
+
+[gui]
+
+theme/custom="uid://chcy1qbc04tlt"

@@ -3,6 +3,7 @@ extends Control
 @onready var music_slider: HSlider = %MusicSlider
 @onready var sound_slider: HSlider = %SoundSlider
 @onready var anims: AnimationPlayer = $AnimationPlayer
+@onready var blur: ColorRect = $Blur
 
 @export var game_scene : PackedScene = preload("res://gameboard/Main.tscn")
 
@@ -32,9 +33,12 @@ func _on_full_screen_button_toggled(toggled_on: bool) -> void:
 func _on_options_button_pressed() -> void:
 	if not options_open:
 		anims.play("options_slide_in")
+		await anims.animation_finished
+		blur.show()
 		options_open = true
 	else:
 		anims.play_backwards("options_slide_in")
+		blur.hide()
 		options_open = false
 
 func _on_opt_close_button_pressed() -> void:

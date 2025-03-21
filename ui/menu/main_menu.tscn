@@ -1,21 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dyi8ugkymhpnd"]
+[gd_scene load_steps=12 format=4 uid="uid://dyi8ugkymhpnd"]
 
 [ext_resource type="Script" uid="uid://b4roya83wjoyo" path="res://ui/menu/main_menu.gd" id="1_37pjl"]
-
-[sub_resource type="Animation" id="Animation_37pjl"]
-resource_name = "options_slide_in"
-length = 0.5
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("SlideoverOptions:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(805, -0.25, 0, 0.25, 0, 590, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.5)
-}
+[ext_resource type="Theme" uid="uid://chcy1qbc04tlt" path="res://ui/themes/main_theme.tres" id="1_or6mk"]
+[ext_resource type="TileSet" uid="uid://csr2ya14hmqvd" path="res://gameboard/scenes/MainTilemap.tres" id="3_gvx18"]
+[ext_resource type="PackedScene" uid="uid://d38jq6ycjg8fp" path="res://gameboard/decoration/grass_deco.tscn" id="4_4gkdq"]
+[ext_resource type="Shader" uid="uid://s46wq6hiqx3o" path="res://ui/menu/blur.gdshader" id="5_yc8k7"]
+[ext_resource type="Texture2D" uid="uid://brcs84hyqaua5" path="res://globals/jam_art/JamWildCards.png" id="6_4aijq"]
 
 [sub_resource type="Animation" id="Animation_or6mk"]
 length = 0.001
@@ -74,6 +64,18 @@ tracks/4/keys = {
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Blur:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_gvx18"]
 resource_name = "fade"
@@ -123,12 +125,32 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.5)
 }
 
+[sub_resource type="Animation" id="Animation_37pjl"]
+resource_name = "options_slide_in"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SlideoverOptions:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(805, -0.25, 0, 0.25, 0, 590, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gvx18"]
 _data = {
 &"RESET": SubResource("Animation_or6mk"),
 &"fade": SubResource("Animation_gvx18"),
 &"options_slide_in": SubResource("Animation_37pjl")
 }
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8gmgf"]
+shader = ExtResource("5_yc8k7")
+shader_parameter/strength = 3.3
+shader_parameter/mix_percentage = 0.3
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -137,6 +159,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_or6mk")
 script = ExtResource("1_37pjl")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -144,6 +167,72 @@ libraries = {
 &"": SubResource("AnimationLibrary_gvx18")
 }
 autoplay = "fade"
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAAYABAAAAAAAAAABAAYABAAAAAAAAAACAAYABAAAAAAAAAADAAYABAAAAAAAAAAEAAYABAAAAAAAAAAFAAYABAAAAAAAAAAGAAYABAAAAAAAAAAHAAYABAAAAAAAAAAIAAYABAAAAAAAAAAJAAYABAAAAAAAAAAKAAYABAAAAAAAAAALAAYABAAAAAAAAAAMAAYABAAAAAAAAAAAAAUAAQAAAAAAAAAAAAQAAQAAAAAAAAAAAAMAAAAAAAAAAAAAAAIAAAAAAAAAAAABAAIAAQAAAAAAAAABAAEAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAAAAwAAAAAAAAABAAAAAwAAAAAAAAACAAAAAwAAAAAAAAADAAAAAwAAAAAAAAADAAEAAQAAAAAAAAAEAAEAAQAAAAAAAAAFAAEAAQAAAAAAAAAGAAEAAQAAAAAAAAAGAAIAAAAAAAAAAAAFAAIAAQAAAAAAAAAEAAIAAAAAAAAAAAAEAAMAAAAAAAAAAAADAAMAAQAAAAAAAAADAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAFAAQAAAAAAAAAAAAGAAQAAAAAAAAAAAAHAAQAAAAAAAAAAAAIAAQAAAAAAAAAAAAIAAMAAAAAAAAAAAAHAAMAAAAAAAAAAAAGAAMAAAAAAAAAAAAFAAMAAAAAAAAAAAACAAUAAQAAAAAAAAABAAUAAQAAAAAAAAABAAQAAAAAAAAAAAACAAIAAAAAAAAAAAACAAEAAQAAAAAAAAACAAMAAAAAAAAAAAABAAMAAQAAAAAAAAACAAQAAAAAAAAAAAADAAUAAQAAAAAAAAAEAAUAAQAAAAAAAAAFAAUAAQAAAAAAAAAGAAUAAAAAAAAAAAAHAAUAAQAAAAAAAAAIAAUAAQAAAAAAAAAJAAUAAQAAAAAAAAAKAAUAAQAAAAAAAAALAAUAAQAAAAAAAAAMAAUAAQAAAAAAAAAMAAQAAQAAAAAAAAALAAQAAQAAAAAAAAALAAMAAQAAAAAAAAALAAIAAAAAAAAAAAALAAEAAQAAAAAAAAAMAAEAAQAAAAAAAAAKAAEAAQAAAAAAAAAJAAEAAQAAAAAAAAAIAAEAAQAAAAAAAAAHAAEAAQAAAAAAAAADAAIAAAAAAAAAAAAJAAMAAAAAAAAAAAAKAAMAAAAAAAAAAAAKAAQAAAAAAAAAAAAJAAQAAQAAAAAAAAAMAAMAAQAAAAAAAAAMAAIAAQAAAAAAAAAKAAIAAAAAAAAAAAAJAAIAAQAAAAAAAAAIAAIAAAAAAAAAAAAHAAIAAAAAAAAAAAAFAAAAAwAAAAAAAAAEAAAAAwAAAAAAAAAGAAAAAwAAAAAAAAAHAAAAAwAAAAAAAAAIAAAAAwAAAAAAAAAJAAAAAwAAAAAAAAAKAAAAAwAAAAAAAAALAAAAAwAAAAAAAAAMAAAAAwAAAAAAAAA=")
+tile_set = ExtResource("3_gvx18")
+
+[node name="GrassDeco" parent="TileMapLayer" instance=ExtResource("4_4gkdq")]
+position = Vector2(89, 351)
+
+[node name="GrassDeco2" parent="TileMapLayer" instance=ExtResource("4_4gkdq")]
+position = Vector2(92, 256)
+
+[node name="GrassDeco3" parent="TileMapLayer" instance=ExtResource("4_4gkdq")]
+position = Vector2(235, 211)
+
+[node name="GrassDeco4" parent="TileMapLayer" instance=ExtResource("4_4gkdq")]
+position = Vector2(690, 340)
+
+[node name="GrassDeco5" parent="TileMapLayer" instance=ExtResource("4_4gkdq")]
+position = Vector2(687, 158)
+
+[node name="GrassDeco6" parent="TileMapLayer" instance=ExtResource("4_4gkdq")]
+position = Vector2(627, 97)
+
+[node name="GrassDeco7" parent="TileMapLayer" instance=ExtResource("4_4gkdq")]
+position = Vector2(66, 89)
+
+[node name="GrassDeco8" parent="TileMapLayer" instance=ExtResource("4_4gkdq")]
+position = Vector2(480, 366)
+
+[node name="GrassDeco9" parent="TileMapLayer" instance=ExtResource("4_4gkdq")]
+position = Vector2(222, 347)
+
+[node name="GrassDeco10" parent="TileMapLayer" instance=ExtResource("4_4gkdq")]
+position = Vector2(467, 61)
+
+[node name="GrassDeco11" parent="TileMapLayer" instance=ExtResource("4_4gkdq")]
+position = Vector2(581, 191)
+
+[node name="GrassDeco12" parent="TileMapLayer" instance=ExtResource("4_4gkdq")]
+position = Vector2(327, 273)
+
+[node name="GrassDeco13" parent="TileMapLayer" instance=ExtResource("4_4gkdq")]
+position = Vector2(327, 125)
+
+[node name="GrassDeco14" parent="TileMapLayer" instance=ExtResource("4_4gkdq")]
+position = Vector2(202, 87)
+
+[node name="GrassDeco15" parent="TileMapLayer" instance=ExtResource("4_4gkdq")]
+position = Vector2(762, 267)
+
+[node name="GrassDeco16" parent="TileMapLayer" instance=ExtResource("4_4gkdq")]
+position = Vector2(584, 382)
+
+[node name="GrassDeco17" parent="TileMapLayer" instance=ExtResource("4_4gkdq")]
+position = Vector2(530, 273)
+
+[node name="Blur" type="ColorRect" parent="."]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+material = SubResource("ShaderMaterial_8gmgf")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="SlideoverOptions" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -155,6 +244,7 @@ offset_left = 1.0
 offset_right = 0.999939
 grow_horizontal = 0
 grow_vertical = 2
+theme = ExtResource("1_or6mk")
 metadata/_edit_use_anchors_ = true
 
 [node name="MarginContainer" type="MarginContainer" parent="SlideoverOptions"]
@@ -190,6 +280,20 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
 
+[node name="Wildcards" type="TextureRect" parent="SlideoverOptions/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 140)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("6_4aijq")
+expand_mode = 1
+
+[node name="Spacer2" type="Control" parent="SlideoverOptions/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HSeparator3" type="HSeparator" parent="SlideoverOptions/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
 [node name="MusicLabel" type="Label" parent="SlideoverOptions/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Music Volume"
@@ -221,27 +325,42 @@ layout_mode = 2
 layout_mode = 2
 text = "Save & Close"
 
-[node name="MenuStack" type="VBoxContainer" parent="."]
+[node name="MenuContainer" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -35.0
-offset_top = -21.5
-offset_right = 35.0
-offset_bottom = 21.5
+offset_left = -78.0
+offset_top = -32.0
+offset_right = 78.0
+offset_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="StartButton" type="Button" parent="MenuStack"]
+[node name="MarginContainer" type="MarginContainer" parent="MenuContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="MenuStack" type="VBoxContainer" parent="MenuContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="StartButton" type="Button" parent="MenuContainer/MarginContainer/MenuStack"]
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 text = "Start Game"
 
-[node name="OptionsButton" type="Button" parent="MenuStack"]
+[node name="OptionsButton" type="Button" parent="MenuContainer/MarginContainer/MenuStack"]
 layout_mode = 2
 text = "Options"
+
+[node name="TutorialButton" type="Button" parent="MenuContainer/MarginContainer/MenuStack"]
+layout_mode = 2
+text = "How to Play"
 
 [node name="Fader" type="ColorRect" parent="."]
 self_modulate = Color(1, 1, 1, 0)
@@ -250,7 +369,7 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -2.0
-offset_right = -2.0
+offset_right = 5.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -258,5 +377,5 @@ color = Color(0.141176, 0.141176, 0.141176, 1)
 
 [connection signal="toggled" from="SlideoverOptions/MarginContainer/VBoxContainer/FullScreen/FullScreenButton" to="." method="_on_full_screen_button_toggled"]
 [connection signal="pressed" from="SlideoverOptions/MarginContainer/VBoxContainer/OptCloseButton" to="." method="_on_opt_close_button_pressed"]
-[connection signal="pressed" from="MenuStack/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="MenuStack/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="MenuContainer/MarginContainer/MenuStack/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="MenuContainer/MarginContainer/MenuStack/OptionsButton" to="." method="_on_options_button_pressed"]
