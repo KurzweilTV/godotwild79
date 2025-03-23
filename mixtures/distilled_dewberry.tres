@@ -12,5 +12,5 @@ ingredient_1_amount = 6
 ingredient_2 = ExtResource("1_ra3o0")
 ingredient_2_amount = 6
 mixture_icon = ExtResource("2_jsgtc")
-time_value = 20
+time_value = 30
 metadata/_custom_type_script = "uid://dcolyfj2k0sko"

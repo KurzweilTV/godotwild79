@@ -5,7 +5,7 @@ signal item_added
 
 @export var ui_location: Vector2
 @export var contents: Dictionary = {}
-@export var debug_inventory : bool = true
+@export var debug_inventory : bool = false
 
 func _ready() -> void:
 	if debug_inventory:

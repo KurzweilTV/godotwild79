@@ -1,6 +1,8 @@
 class_name Cauldron
 extends Node2D
 
+signal time_added(time)
+
 @export var current_mixture: Mixture = preload("res://mixtures/blazebloom.tres")
 @onready var liquid: Sprite2D = $Liquid
 @onready var ingredient_1_bar: ProgressBar = %Ingredient1
@@ -153,8 +155,10 @@ func _on_mix_button_pressed() -> void:
 	var ing2_filled = "ingredient_2" in cook_slots and cook_slots["ingredient_2"].get("count", 0) >= cook_slots["ingredient_2"].get("required", 0)
 
 	if ing1_filled and ing2_filled:
-		print("Mixing %s" % current_mixture.mixture_name)
-		reset_cauldron()
+		time_added.emit(current_mixture.time_value)
+		GameManager.add_points(1)
 		order_scene.cycle_in_next_order()
+		reset_cauldron()
+		
 	else:
 		GlobalCursor.float_text("Ingredients\nmissing!", Color.RED)

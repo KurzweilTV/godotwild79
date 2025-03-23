@@ -23,6 +23,7 @@ GlobalCursor="*res://globals/cursor_handler.gd"
 Inventory="*res://globals/inventory.gd"
 MessageBus="*res://globals/message_bus.gd"
 Settings="*res://globals/settings.gd"
+GameManager="*res://globals/manager.gd"
 
 [display]
 

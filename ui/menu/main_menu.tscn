@@ -1,12 +1,17 @@
-[gd_scene load_steps=14 format=4 uid="uid://dyi8ugkymhpnd"]
+[gd_scene load_steps=19 format=4 uid="uid://dyi8ugkymhpnd"]
 
 [ext_resource type="Script" uid="uid://b4roya83wjoyo" path="res://ui/menu/main_menu.gd" id="1_37pjl"]
 [ext_resource type="Theme" uid="uid://chcy1qbc04tlt" path="res://ui/themes/main_theme.tres" id="1_or6mk"]
 [ext_resource type="TileSet" uid="uid://csr2ya14hmqvd" path="res://gameboard/scenes/MainTilemap.tres" id="3_gvx18"]
+[ext_resource type="AudioStream" uid="uid://duaidpw3p8e67" path="res://audio/music/FarmersMarket.mp3" id="3_h2671"]
 [ext_resource type="PackedScene" uid="uid://d38jq6ycjg8fp" path="res://gameboard/decoration/grass_deco.tscn" id="4_4gkdq"]
 [ext_resource type="Shader" uid="uid://s46wq6hiqx3o" path="res://ui/menu/blur.gdshader" id="5_yc8k7"]
 [ext_resource type="Texture2D" uid="uid://brcs84hyqaua5" path="res://globals/jam_art/JamWildCards.png" id="6_4aijq"]
 [ext_resource type="Texture2D" uid="uid://bosvkjn4870nq" path="res://ui/menu/WitchMixLogo.png" id="7_8gmgf"]
+[ext_resource type="Texture2D" uid="uid://brlevrshjxmrn" path="res://ui/menu/tutorial/tutorial1.png" id="9_u4nky"]
+[ext_resource type="Texture2D" uid="uid://qwe8m1g734nt" path="res://ui/menu/tutorial/tutorial2.png" id="10_r5t3j"]
+[ext_resource type="Texture2D" uid="uid://cm68fx4jnbsti" path="res://ui/menu/tutorial/tutorial3.png" id="11_r5t3j"]
+[ext_resource type="Texture2D" uid="uid://ddgghkcpo56f3" path="res://ui/menu/tutorial/tutorial4.png" id="12_t3kfx"]
 
 [sub_resource type="Animation" id="Animation_or6mk"]
 length = 0.001
@@ -191,6 +196,11 @@ grow_vertical = 2
 theme = ExtResource("1_or6mk")
 script = ExtResource("1_37pjl")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_h2671")
+autoplay = true
+bus = &"Music"
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_gvx18")
@@ -339,7 +349,7 @@ unique_name_in_owner = true
 layout_mode = 2
 max_value = 1.0
 step = 0.1
-value = 0.7
+value = 0.5
 
 [node name="SoundLabel" type="Label" parent="SlideoverOptions/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -351,7 +361,7 @@ unique_name_in_owner = true
 layout_mode = 2
 max_value = 1.0
 step = 0.1
-value = 0.7
+value = 0.5
 
 [node name="HSeparator2" type="HSeparator" parent="SlideoverOptions/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -410,7 +420,140 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.141176, 0.141176, 0.141176, 1)
 
+[node name="TutorialWindow4" type="PanelContainer" parent="."]
+visible = false
+z_index = 20
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -362.0
+offset_top = -197.0
+offset_right = 362.0
+offset_bottom = 197.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TutorialWindow4"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="TutorialWindow4/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("12_t3kfx")
+expand_mode = 1
+
+[node name="TutNext4" type="Button" parent="TutorialWindow4/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Next"
+
+[node name="TutorialWindow3" type="PanelContainer" parent="."]
+visible = false
+z_index = 20
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -362.0
+offset_top = -197.0
+offset_right = 362.0
+offset_bottom = 197.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TutorialWindow3"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="TutorialWindow3/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("11_r5t3j")
+expand_mode = 1
+
+[node name="TutNext3" type="Button" parent="TutorialWindow3/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Next"
+
+[node name="TutorialWindow2" type="PanelContainer" parent="."]
+visible = false
+z_index = 20
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -362.0
+offset_top = -197.0
+offset_right = 362.0
+offset_bottom = 197.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TutorialWindow2"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="TutorialWindow2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("10_r5t3j")
+expand_mode = 1
+
+[node name="TutNext2" type="Button" parent="TutorialWindow2/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Next"
+
+[node name="TutorialWindow1" type="PanelContainer" parent="."]
+visible = false
+z_index = 20
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -362.0
+offset_top = -197.0
+offset_right = 362.0
+offset_bottom = 197.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TutorialWindow1"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="TutorialWindow1/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("9_u4nky")
+expand_mode = 1
+
+[node name="TutNext1" type="Button" parent="TutorialWindow1/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Next"
+
 [connection signal="toggled" from="SlideoverOptions/MarginContainer/VBoxContainer/FullScreen/FullScreenButton" to="." method="_on_full_screen_button_toggled"]
 [connection signal="pressed" from="SlideoverOptions/MarginContainer/VBoxContainer/OptCloseButton" to="." method="_on_opt_close_button_pressed"]
 [connection signal="pressed" from="MenuContainer/MarginContainer/MenuStack/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="MenuContainer/MarginContainer/MenuStack/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="MenuContainer/MarginContainer/MenuStack/TutorialButton" to="." method="_on_tutorial_button_pressed"]
+[connection signal="pressed" from="TutorialWindow4/VBoxContainer/TutNext4" to="." method="_on_tut_next_4_pressed"]
+[connection signal="pressed" from="TutorialWindow3/VBoxContainer/TutNext3" to="." method="_on_tut_next_3_pressed"]
+[connection signal="pressed" from="TutorialWindow2/VBoxContainer/TutNext2" to="." method="_on_tut_next_2_pressed"]
+[connection signal="pressed" from="TutorialWindow1/VBoxContainer/TutNext1" to="." method="_on_tut_next_1_pressed"]

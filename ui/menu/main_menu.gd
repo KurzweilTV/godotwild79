@@ -4,6 +4,10 @@ extends Control
 @onready var sound_slider: HSlider = %SoundSlider
 @onready var anims: AnimationPlayer = $AnimationPlayer
 @onready var blur: ColorRect = $Blur
+@onready var tutorial_window_4: PanelContainer = $TutorialWindow4
+@onready var tutorial_window_3: PanelContainer = $TutorialWindow3
+@onready var tutorial_window_2: PanelContainer = $TutorialWindow2
+@onready var tutorial_window_1: PanelContainer = $TutorialWindow1
 
 @export var game_scene : PackedScene = preload("res://gameboard/Main.tscn")
 
@@ -51,3 +55,31 @@ func _on_start_button_pressed() -> void:
 	anims.play_backwards("fade")
 	await anims.animation_finished
 	get_tree().change_scene_to_packed(game_scene)
+
+
+func _on_tutorial_button_pressed() -> void:
+	if options_open:
+		anims.play_backwards("options_slide_in")
+		blur.hide()
+		options_open = false
+		
+	tutorial_window_1.show()
+	tutorial_window_2.show()
+	tutorial_window_3.show()
+	tutorial_window_4.show()
+
+
+func _on_tut_next_1_pressed() -> void:
+	tutorial_window_1.hide()
+
+
+func _on_tut_next_2_pressed() -> void:
+	tutorial_window_2.hide()
+
+
+func _on_tut_next_3_pressed() -> void:
+	tutorial_window_3.hide()
+
+
+func _on_tut_next_4_pressed() -> void:
+	tutorial_window_4.hide()
