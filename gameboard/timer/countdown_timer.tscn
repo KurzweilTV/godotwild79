@@ -17,9 +17,11 @@ offset_right = 40.0
 offset_bottom = 45.0
 text = "99"
 label_settings = ExtResource("1_58g7r")
+horizontal_alignment = 1
+vertical_alignment = 2
 
 [node name="GameTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 15.0
 one_shot = true
 autostart = true
 

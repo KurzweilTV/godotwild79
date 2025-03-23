@@ -40,6 +40,7 @@ func update_liquid_color():
 				weighted_color += crop.crop_color * count
 	
 	if total_quantity > 0:
+		$Liquid.show()
 		weighted_color /= total_quantity
 	
 	liquid.modulate = weighted_color
@@ -123,6 +124,7 @@ func reset_cauldron():
 	ingredient_2_bar.value = 0
 	texture_1.texture = null
 	texture_2.texture = null
+	$Liquid.hide()
 
 func _on_add_glowroot_one_pressed() -> void:
 	add_ingredient(GLOWROOT, 1)

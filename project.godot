@@ -10,12 +10,12 @@ config_version=5
 
 [application]
 
-config/name="Godot Wild 79"
+config/name="WitchMix!"
 config/tags=PackedStringArray("gamejam")
 run/main_scene="uid://dnbi6ys8hyqo"
 config/features=PackedStringArray("4.4", "Forward Plus")
 boot_splash/show_image=false
-config/icon="res://icon.svg"
+config/icon="uid://q1kkf68480yx"
 
 [autoload]
 
